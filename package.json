@@ -1,0 +1,25 @@
+{
+  "name": "jaxos",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "start": "bun src/tui/index.tsx",
+    "dev": "bun --hot src/tui/index.tsx"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/react": "^19.2.14"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@ai-sdk/openai": "^3.0.62",
+    "@inkjs/ui": "^2.0.0",
+    "ai": "^6.0.175",
+    "ink": "^7.0.1",
+    "react": "^19.2.5",
+    "zod": "^4.4.3"
+  }
+}
