@@ -1,5 +1,7 @@
 # JaxOS v3.1: The Local-First Ambient AI OS 🦥
 
+A Windows desktop alpha with local AI and KiCad checks is being prepared under [apps/desktop](apps/desktop/README.md). See its [launch readiness](apps/desktop/docs/launch/README.md); native Windows acceptance and public release availability are pending.
+
 > "Cognition without Ecosystem Lock-in."
 
 JaxOS is an open-source, high-fidelity research laboratory and autonomous reasoning engine. It transforms your terminal into a professional "Scientist's Desk," leveraging local LLMs to build a digital second brain that grows with you.

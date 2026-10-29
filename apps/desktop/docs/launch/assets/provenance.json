@@ -1,0 +1,23 @@
+[
+  {
+    "asset": "managed-model-linux.png",
+    "source": "docs/validation/release-0.5.0/electron-results/llama-managed-GGUF-lifecyc-e5970-eanup-work-in-real-Electron/actual-llama-loaded-1440.png",
+    "version": "0.5.0",
+    "platform": "Linux Electron under Xvfb",
+    "purpose": "internal preview; recapture on Windows before public launch"
+  },
+  {
+    "asset": "model-requested-drc-linux.png",
+    "source": "docs/validation/release-0.5.0/electron-results/llama-a-real-local-GGUF-se-d0aa8-tual-KiCad-failure-evidence/actual-stage-tool-failure-1440.png",
+    "version": "0.5.0",
+    "platform": "Linux Electron under Xvfb",
+    "purpose": "internal preview; recapture on Windows before public launch"
+  },
+  {
+    "asset": "kicad-findings-linux.png",
+    "source": "docs/validation/release-0.5.0/electron-results/kicad-KiCad-checks-preview-45420-e-and-detect-changed-inputs/actual-failed-kicad-check.png",
+    "version": "0.5.0",
+    "platform": "Linux Electron under Xvfb",
+    "purpose": "internal preview; recapture on Windows before public launch"
+  }
+]

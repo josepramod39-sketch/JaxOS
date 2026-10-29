@@ -1,0 +1,15 @@
+:root {
+  --font: 'Segoe UI Variable', 'Segoe UI', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+  --mono: 'Cascadia Code', 'Consolas', 'Courier New', monospace;
+  --blue: #0053fd;
+  --blue-faint: #eef4ff;
+  --ink: #1b263b;
+  --muted: #5b6b83;
+  --paper: #f8faff;
+  --chrome: #f3f7ff;
+  --sidebar: #f3f7ff;
+  --panel: #f8faff;
+  --hover: #e8effb;
+  --line: #e3eaf5;
+  --line-strong: #d5dfef;
+}

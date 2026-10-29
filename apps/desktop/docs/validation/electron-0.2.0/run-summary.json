@@ -1,0 +1,12 @@
+{
+  "startTime": 1792485562252,
+  "duration": 31688.311,
+  "stats": {
+    "total": 7,
+    "expected": 7,
+    "unexpected": 0,
+    "flaky": 0,
+    "skipped": 0,
+    "ok": true
+  }
+}

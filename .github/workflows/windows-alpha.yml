@@ -1,0 +1,53 @@
+# Copy to repository-root .github/workflows/windows-alpha.yml after adding apps/desktop.
+# Manual validation only. This workflow does not publish releases or posts.
+name: Windows desktop alpha acceptance
+"on":
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  windows-alpha:
+    runs-on: windows-2022
+    timeout-minutes: 25
+    defaults:
+      run:
+        working-directory: apps/desktop
+        shell: pwsh
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: apps/desktop/package-lock.json
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run build
+      - run: npm run package:win
+      - name: Extract the new installer and verify payload
+        run: |
+          $extract = Join-Path $env:RUNNER_TEMP 'jaxos-installer-extracted'
+          & 7z x release/JaxOS-Setup-0.5.1-win-x64.exe JaxOS.exe resources/app.asar evaluate.cmd "-o$extract" -y
+          if ($LASTEXITCODE -ne 0) { throw 'Installer extraction failed.' }
+          node scripts/verify-windows-package.mjs --extracted $extract --output release/native-package-verification.json
+          if ($LASTEXITCODE -ne 0) { throw 'Package verification failed.' }
+      - name: Fresh install in the disposable runner account
+        run: |
+          $setup = Start-Process -FilePath (Resolve-Path release/JaxOS-Setup-0.5.1-win-x64.exe) -ArgumentList '/S' -Wait -PassThru
+          if ($setup.ExitCode -ne 0) { throw "Installer exit $($setup.ExitCode)" }
+      - name: Check installed artifact identity and CLI wrapper
+        run: |
+          ./scripts/collect-windows-alpha.ps1 -InstallerPath release/JaxOS-Setup-0.5.1-win-x64.exe -ReceiptPath release/windows-build-receipt.json -VerificationPath release/native-package-verification.json -OutputPath release/windows-native-partial.json
+          if ($LASTEXITCODE -ne 0) { throw 'Installed CLI acceptance failed.' }
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: jaxos-windows-alpha-validation
+          path: |
+            apps/desktop/release/JaxOS-Setup-0.5.1-win-x64.exe
+            apps/desktop/release/*receipt*.json
+            apps/desktop/release/*verification*.json
+            apps/desktop/release/windows-native-partial.json
+            apps/desktop/release/SHA256SUMS
+          if-no-files-found: warn
+# Fresh installation/CLI checks do not establish GUI, model, KiCad, upgrades or uninstall acceptance.

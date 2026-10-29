@@ -1,0 +1,33 @@
+{
+  "unitPassed": 77,
+  "uniqueElectronScenariosPassedAfterTargetedCorrection": 13,
+  "unresolvedFailures": 0,
+  "initialElectronRun": {
+    "startTime": 1792961631749,
+    "duration": 94864.388,
+    "stats": {
+      "total": 13,
+      "expected": 12,
+      "unexpected": 1,
+      "flaky": 0,
+      "skipped": 0,
+      "ok": false
+    }
+  },
+  "correctedAttachedServerRun": {
+    "startTime": 1792961740363,
+    "duration": 4652.308999999999,
+    "stats": {
+      "total": 1,
+      "expected": 1,
+      "unexpected": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "ok": true
+    }
+  },
+  "correction": "Test locator changed from textbox to combobox for the native input with datalist. Application code unchanged.",
+  "releaseChanged": false,
+  "nativeWindowsExecuted": false,
+  "gpuExecutionTested": false
+}

@@ -1,0 +1,35 @@
+{
+  "version": "0.5.1",
+  "state": "prepared-not-published",
+  "sourceLicense": "Apache-2.0",
+  "githubAccess": "invalid supplied GH_TOKEN; repository API unavailable",
+  "nativeWindowsAcceptance": "not-run",
+  "demoVideo": "storyboard prepared; Windows capture pending",
+  "publicUrlMarkers": {
+    "docs/launch/README.md": [],
+    "docs/launch/RELEASE.md": [
+      "{{DEMO_URL}}",
+      "{{ISSUE_URL}}",
+      "{{QUICKSTART_URL}}",
+      "{{WINDOWS_ACCEPTANCE_URL}}"
+    ],
+    "docs/launch/POSTS.md": [
+      "{{DEMO_URL}}",
+      "{{PROJECT_URL}}",
+      "{{RELEASE_URL}}"
+    ]
+  },
+  "nativeCollector": "PowerShell script prepared; not executed on Windows",
+  "workflowTemplate": "YAML parsed locally; not run",
+  "unitTests": {
+    "passed": 86,
+    "failed": 0
+  },
+  "extractedPayloadFilesMatched": 32,
+  "targetedLinuxElectronArchiveTest": {
+    "passed": 1,
+    "failed": 0
+  },
+  "installerSha256": "5d2a1ff6d6bb19f27a45731e6c6877846054a7e07fed2b46d123741261936cc4",
+  "integrationBranch": "codex/desktop-public-alpha"
+}

@@ -1,0 +1,83 @@
+{
+  "verifiedAt": "2026-10-25T06:25:21.845Z",
+  "status": "passed",
+  "evidence": "Independent SHA-256, PE-header, extracted installer archive and tested-build byte comparisons. No Windows execution.",
+  "installer": {
+    "artifact": "JaxOS-Setup-0.4.0-win-x64.exe",
+    "bytes": 113279298,
+    "sha256": "96addb85101c0acec51277e6af12f3c20ef03a283dd386a21127db49c1b297a9",
+    "matchesReceipt": true
+  },
+  "application": {
+    "archiveSha256": "ab245833bfd44616c6a3214925f9b0aa1424207588275ad1bc299dec034ea3b9",
+    "matchesReceipt": true,
+    "peMachine": "0x8664 (x64)",
+    "main": "dist-electron/main.cjs",
+    "version": "0.4.0",
+    "coordinatorIncluded": true,
+    "llamaSupervisorIncluded": true,
+    "licenseAndNoticesMatch": true,
+    "extractedInstallerArchiveMatches": true
+  },
+  "matchedFiles": [
+    {
+      "file": "dist/assets/index-0IZCucWc.js",
+      "bytes": 296559,
+      "sha256": "4da57846f0e0774c6098538e2ff88ef27c114b316c65cf1a41db68d1545fb53f",
+      "equalsAsarExtract": true,
+      "recordedInValidatedBuildManifest": true
+    },
+    {
+      "file": "dist/assets/index-BGBF8eV3.css",
+      "bytes": 37541,
+      "sha256": "20d22f0b1cdcdf6b5c105642d0b0b2354f5de80e9a5de73cc89ae427dc010fc8",
+      "equalsAsarExtract": true,
+      "recordedInValidatedBuildManifest": true
+    },
+    {
+      "file": "dist/index.html",
+      "bytes": 731,
+      "sha256": "bc80fabe85b323a8f09be6d9ec9cfa17028f63e99949f492205b11938562bde2",
+      "equalsAsarExtract": true,
+      "recordedInValidatedBuildManifest": true
+    },
+    {
+      "file": "dist-electron/llama-host.cjs",
+      "bytes": 1669,
+      "sha256": "62f0b5e3d340514b98d25ee43df57b7857701ce056326c45894a6f7a76f9c250",
+      "equalsAsarExtract": true,
+      "recordedInValidatedBuildManifest": true
+    },
+    {
+      "file": "dist-electron/main.cjs",
+      "bytes": 22568,
+      "sha256": "dd9494b691ca20f6b78ec247caa117145a4681caf9131790b29a2a633c26cf17",
+      "equalsAsarExtract": true,
+      "recordedInValidatedBuildManifest": true
+    },
+    {
+      "file": "dist-electron/preload.cjs",
+      "bytes": 3827,
+      "sha256": "a0140801b3dfe5e3ef856706b302e3ffa4d7771f21dd98637179bd137c433291",
+      "equalsAsarExtract": true,
+      "recordedInValidatedBuildManifest": true
+    },
+    {
+      "file": "dist-electron/service-host.cjs",
+      "bytes": 161307,
+      "sha256": "30db84e0695cc69abcaedd84825d4c0e8f22f07bd01f0409ebb891da0ffb36d2",
+      "equalsAsarExtract": true,
+      "recordedInValidatedBuildManifest": true
+    }
+  ],
+  "testedBuildManifest": "docs/validation/electron-0.4.0/validated-build.sha256",
+  "nativeWindowsValidated": false,
+  "remainingWindowsChecks": [
+    "Install/upgrade/uninstall and retained workspace",
+    "SQLite/FTS5 and backup restoration",
+    "Native dialogs/tray/process cleanup",
+    "Windows llama.cpp DLL/flags/paths and GPU placement",
+    "Attached-server real GUI authentication and lifecycle boundaries",
+    "Windows KiCad execution"
+  ]
+}

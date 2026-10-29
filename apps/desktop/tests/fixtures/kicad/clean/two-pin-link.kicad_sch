@@ -1,0 +1,160 @@
+(kicad_sch (version 20250114) (generator "eeschema") (generator_version "9.0") (uuid "46018ffe-f371-45a5-ac77-92aa461c98e0") (paper "A4") (title_block (title "Two-pin link / clean connectivity fixture"))
+(lib_symbols (symbol "Connector_Generic:Conn_01x02"
+		(pin_names
+			(offset 1.016)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "J"
+			(at 0 2.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Conn_01x02"
+			(at 0 -5.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_keywords" "connector"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_fp_filters" "Connector*:*_1x??_*"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(symbol "Conn_01x02_1_1"
+			(rectangle
+				(start -1.27 1.27)
+				(end 1.27 -3.81)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+			(rectangle
+				(start -1.27 0.127)
+				(end 0 -0.127)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(rectangle
+				(start -1.27 -2.413)
+				(end 0 -2.667)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(pin passive line
+				(at -5.08 0 0)
+				(length 3.81)
+				(name "Pin_1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -5.08 -2.54 0)
+				(length 3.81)
+				(name "Pin_2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	))
+(symbol (lib_id "Connector_Generic:Conn_01x02") (at 76.2 76.2 0) (mirror y) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "fb033cc9-d293-46d4-a902-5eb566f95ad4")
+(property "Reference" "J1" (at 76.2 72.39 0) (effects (font (size 1.27 1.27))))
+(property "Value" "Conn_01x02" (at 76.2 83.82 0) (effects (font (size 1.27 1.27))))
+(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" (at 76.2 76.2 0) (effects (font (size 1.27 1.27)) (hide yes)))
+(property "Datasheet" "~" (at 76.2 76.2 0) (effects (font (size 1.27 1.27)) (hide yes)))
+(pin "1" (uuid "ea12f428-93f3-4fd4-b628-b70a219caefa")) (pin "2" (uuid "a5299bee-a131-4850-be4a-f2524cf93f4c"))
+(instances (project "two-pin-link" (path "/46018ffe-f371-45a5-ac77-92aa461c98e0" (reference "J1") (unit 1)))))
+(symbol (lib_id "Connector_Generic:Conn_01x02") (at 101.6 76.2 0)  (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "0fccc91c-5f42-48c8-815a-fcea9efda505")
+(property "Reference" "J2" (at 101.6 72.39 0) (effects (font (size 1.27 1.27))))
+(property "Value" "Conn_01x02" (at 101.6 83.82 0) (effects (font (size 1.27 1.27))))
+(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" (at 101.6 76.2 0) (effects (font (size 1.27 1.27)) (hide yes)))
+(property "Datasheet" "~" (at 101.6 76.2 0) (effects (font (size 1.27 1.27)) (hide yes)))
+(pin "1" (uuid "be926181-5391-433f-b583-d99719746032")) (pin "2" (uuid "77382c7b-e36f-463e-9cd7-032693574cd5"))
+(instances (project "two-pin-link" (path "/46018ffe-f371-45a5-ac77-92aa461c98e0" (reference "J2") (unit 1)))))
+(wire (pts (xy 81.28 76.2) (xy 96.52 76.2)) (stroke (width 0) (type default)) (uuid "bb8ab471-876e-4659-aabe-ac52cba4d879"))
+(wire (pts (xy 81.28 78.74) (xy 96.52 78.74)) (stroke (width 0) (type default)) (uuid "66bdfdeb-82bb-494f-b4fb-87d992a5d701"))
+(sheet_instances (path "/" (page "1"))) (embedded_fonts no))

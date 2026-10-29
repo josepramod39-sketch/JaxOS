@@ -1,0 +1,124 @@
+{
+  "reviewedAt": "2026-10-20T11:05:27.302377+00:00",
+  "repository": "anomalyco/opencode",
+  "tag": "v2.1.0",
+  "resolvedRevision": "60c68d145a14127ce633e26aa5fdfb882a7baa6d",
+  "resolution": "git ls-remote; no separate peeled tag entry returned",
+  "scope": "Selected official source inspection, not installer equivalence or runtime validation. Manifest probes used the resolved tag; implementation probes use the full commit.",
+  "requests": [
+    {
+      "path": "package.json",
+      "url": "https://raw.githubusercontent.com/anomalyco/opencode/v2.1.0/package.json",
+      "status": 200,
+      "sha256": "37725ce721c8fa56b5636eb6abdaf926c1d3652a65c35a362896351042fd5cb7",
+      "bytes": 7638
+    },
+    {
+      "path": "packages/desktop/package.json",
+      "url": "https://raw.githubusercontent.com/anomalyco/opencode/v2.1.0/packages/desktop/package.json",
+      "status": 200,
+      "sha256": "3916f412449957a0a69011ee863c3209de7a043daf2f299f8129c44d5a2eebd3",
+      "bytes": 2337
+    },
+    {
+      "path": "packages/desktop-electron/package.json",
+      "url": "https://raw.githubusercontent.com/anomalyco/opencode/v2.1.0/packages/desktop-electron/package.json",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "packages/desktop/src/main/index.ts",
+      "url": "https://raw.githubusercontent.com/anomalyco/opencode/60c68d145a14127ce633e26aa5fdfb882a7baa6d/packages/desktop/src/main/index.ts",
+      "status": 200,
+      "sha256": "4a79446286662f0d1b0b988b0bfa74aca52cfd5d44cd383c3557b0955ef8b840",
+      "bytes": 1770
+    },
+    {
+      "path": "packages/desktop/src/preload/index.ts",
+      "url": "https://raw.githubusercontent.com/anomalyco/opencode/60c68d145a14127ce633e26aa5fdfb882a7baa6d/packages/desktop/src/preload/index.ts",
+      "status": 200,
+      "sha256": "9cb812ecde5f29a759ef8a7abad4d27892ec8bbcc1c41a2a0e129fd15de12465",
+      "bytes": 1122
+    },
+    {
+      "path": "packages/desktop/src/main/service.ts",
+      "url": "https://raw.githubusercontent.com/anomalyco/opencode/60c68d145a14127ce633e26aa5fdfb882a7baa6d/packages/desktop/src/main/service.ts",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "packages/protocol/src/groups/worktree.ts",
+      "url": "https://raw.githubusercontent.com/anomalyco/opencode/60c68d145a14127ce633e26aa5fdfb882a7baa6d/packages/protocol/src/groups/worktree.ts",
+      "status": 200,
+      "sha256": "2a7e51e7fcf2649b517c01171d46d068bdd930142298977b153836ea0394751b",
+      "bytes": 2757
+    },
+    {
+      "path": "packages/cli/src/commands/commands.ts",
+      "url": "https://raw.githubusercontent.com/anomalyco/opencode/60c68d145a14127ce633e26aa5fdfb882a7baa6d/packages/cli/src/commands/commands.ts",
+      "status": 200,
+      "sha256": "256c023dfef9ed2c85042a1096432319020b7a76e81e1942f0de50d421ae3688",
+      "bytes": 22252
+    },
+    {
+      "path": "packages/desktop/src/main/desktop.ts",
+      "url": "https://raw.githubusercontent.com/anomalyco/opencode/60c68d145a14127ce633e26aa5fdfb882a7baa6d/packages/desktop/src/main/desktop.ts",
+      "status": 200,
+      "bytes": 2195,
+      "sha256": "4a2988ec299a92cc824d08bdb17d6db92fbaecd17586e0edfbbba53fefcae90d"
+    },
+    {
+      "path": "packages/desktop/src/main/service/index.ts",
+      "url": "https://raw.githubusercontent.com/anomalyco/opencode/60c68d145a14127ce633e26aa5fdfb882a7baa6d/packages/desktop/src/main/service/index.ts",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "packages/desktop/src/shared/ipc.ts",
+      "url": "https://raw.githubusercontent.com/anomalyco/opencode/60c68d145a14127ce633e26aa5fdfb882a7baa6d/packages/desktop/src/shared/ipc.ts",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "packages/desktop/src/shared/constants.ts",
+      "url": "https://raw.githubusercontent.com/anomalyco/opencode/60c68d145a14127ce633e26aa5fdfb882a7baa6d/packages/desktop/src/shared/constants.ts",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "packages/desktop/src/shared/ipc-transport.ts",
+      "url": "https://raw.githubusercontent.com/anomalyco/opencode/60c68d145a14127ce633e26aa5fdfb882a7baa6d/packages/desktop/src/shared/ipc-transport.ts",
+      "status": 200,
+      "bytes": 2034,
+      "sha256": "16d47c801d3d5825a28140dd1cdd1b9146e90ceda0eb201f1a18c4b344d7b439"
+    },
+    {
+      "path": "packages/desktop/src/main/service/service.ts",
+      "url": "https://raw.githubusercontent.com/anomalyco/opencode/60c68d145a14127ce633e26aa5fdfb882a7baa6d/packages/desktop/src/main/service/service.ts",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "path": "packages/desktop/src/main/service/sidecar-probe.ts",
+      "url": "https://raw.githubusercontent.com/anomalyco/opencode/60c68d145a14127ce633e26aa5fdfb882a7baa6d/packages/desktop/src/main/service/sidecar-probe.ts",
+      "status": 200,
+      "bytes": 1154,
+      "sha256": "c2d64c6236c48aac46b1ab577d09a314011a5d3f53156b595c232c28c3fd8623"
+    },
+    {
+      "path": "packages/desktop/src/main/service/background-service.ts",
+      "url": "https://raw.githubusercontent.com/anomalyco/opencode/60c68d145a14127ce633e26aa5fdfb882a7baa6d/packages/desktop/src/main/service/background-service.ts",
+      "status": 200,
+      "bytes": 4167,
+      "sha256": "b0b7f31096ddf8a24b57c554d1c4bf2751cb1fa4417e4531a7aae771c2683985"
+    },
+    {
+      "path": "packages/desktop/src/main/service/desktop-cli.ts",
+      "url": "https://raw.githubusercontent.com/anomalyco/opencode/60c68d145a14127ce633e26aa5fdfb882a7baa6d/packages/desktop/src/main/service/desktop-cli.ts",
+      "status": 200,
+      "bytes": 8193,
+      "sha256": "2bfa2673d5f5bfceadecc609aa0105542cddd08ea53d6881c8c4dfbc7e4dc775"
+    },
+    {
+      "path": "packages/desktop/src/main/ipc.ts",
+      "url": "https://raw.githubusercontent.com/anomalyco/opencode/60c68d145a14127ce633e26aa5fdfb882a7baa6d/packages/desktop/src/main/ipc.ts",
+      "status": 200,
+      "bytes": 3268,
+      "sha256": "0f086a87cac625e63cf7eb5bb44d636fe4dd33e4730a342894387116ababb840"
+    }
+  ]
+}

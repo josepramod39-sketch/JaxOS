@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "suite": "jaxos-local-development-v2",
+  "cases": [
+    {
+      "id": "policy-plan-denies-drc",
+      "kind": "policy",
+      "stage": "plan",
+      "tool": "project_run",
+      "arguments": {
+        "kind": "drc"
+      },
+      "allowed": false
+    },
+    {
+      "id": "policy-test-allows-drc",
+      "kind": "policy",
+      "stage": "test",
+      "tool": "project_run",
+      "arguments": {
+        "kind": "drc"
+      },
+      "allowed": true
+    },
+    {
+      "id": "policy-test-denies-path",
+      "kind": "policy",
+      "stage": "test",
+      "tool": "project_run",
+      "arguments": {
+        "kind": "drc",
+        "path": "/outside"
+      },
+      "allowed": false
+    },
+    {
+      "id": "context-latest-complete",
+      "kind": "context"
+    },
+    {
+      "id": "cancel-before-execution",
+      "kind": "cancel"
+    },
+    {
+      "id": "kicad-clean-drc",
+      "kind": "kicad",
+      "project": "clean",
+      "run": "drc",
+      "expected": "passed"
+    },
+    {
+      "id": "kicad-fault-drc",
+      "kind": "kicad",
+      "project": "fault",
+      "run": "drc",
+      "expected": "failed"
+    },
+    {
+      "id": "kicad-stale-snapshot",
+      "kind": "kicad-stale"
+    },
+    {
+      "id": "kicad-active-cancel",
+      "kind": "kicad-cancel"
+    },
+    {
+      "id": "model-arithmetic",
+      "kind": "model",
+      "prompt": "Reply with exactly the numeral: what is two plus two? /no_think",
+      "expectedPattern": "^4[.!]?$"
+    },
+    {
+      "id": "coordinator-active-cancel",
+      "kind": "coordinator-cancel"
+    },
+    {
+      "id": "coordinator-crash-recovery",
+      "kind": "coordinator-crash"
+    },
+    {
+      "id": "coordinator-model-arithmetic",
+      "kind": "coordinator-model",
+      "prompt": "Reply with exactly one numeral. What is 2 + 2? /no_think",
+      "expectedPattern": "^4[.!]?$"
+    }
+  ]
+}

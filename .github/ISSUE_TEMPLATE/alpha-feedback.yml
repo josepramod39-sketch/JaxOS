@@ -1,0 +1,41 @@
+name: Windows alpha feedback
+description: Report setup or your first KiCad check.
+title: "[Alpha] "
+body:
+  - type: markdown
+    attributes:
+      value: "This report is public. Remove API keys, private paths and proprietary projects. Do not upload workspace databases."
+  - type: input
+    id: version
+    attributes:
+      label: JaxOS version and Windows build
+    validations:
+      required: true
+  - type: input
+    id: runtime
+    attributes:
+      label: Runtime, model and KiCad versions
+  - type: dropdown
+    id: stage
+    attributes:
+      label: Furthest step completed
+      options:
+        - Installation
+        - First model response
+        - Connected project
+        - Completed ERC or DRC
+        - Returned to use it again
+        - Could not start
+    validations:
+      required: true
+  - type: textarea
+    id: experience
+    attributes:
+      label: What happened and what did you expect?
+      description: Include minimal reproduction steps and sanitized error text.
+    validations:
+      required: true
+  - type: textarea
+    id: value
+    attributes:
+      label: What would make this more useful for your workflow?

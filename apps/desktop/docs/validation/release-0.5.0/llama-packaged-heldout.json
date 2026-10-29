@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "runId": "69a5a811-cc26-471f-a55d-80d75893a953",
+  "createdAt": "2026-10-29T04:26:54.345Z",
+  "suite": "jaxos-local-heldout-v1",
+  "fixtureSha256": "807d3d6a30244fded4a849785a2b466b01c06dd7648a9e51f6579ffa0ffadf7c",
+  "sourceSha256": "9c2d73dbd9ac7fb0744507bc8d67eb886237b5695cebec688175308ed6226956",
+  "environment": {
+    "identityKind": "packaged-bundles-v1",
+    "node": "v24.21.0",
+    "platform": "linux",
+    "arch": "x64",
+    "kicad": {
+      "version": "9.0.2",
+      "path": "/usr/bin/kicad-cli"
+    },
+    "kicadFixturesSha256": "bb5a45a75b453ad71486a44147a12e44a5c6a7846b38691f0f938265a9998981",
+    "model": {
+      "provider": "llamacpp",
+      "model": "jaxos-gguf",
+      "profile": {
+        "contextTokens": 4096,
+        "outputTokens": 256,
+        "keepAliveSeconds": -1,
+        "thinking": "off",
+        "gpu": "cpu",
+        "temperature": 0
+      },
+      "connection": {
+        "mode": "managed",
+        "executable": "/workspace/.tools/ollama/lib/ollama/llama-server",
+        "modelPath": "/workspace/.cache/jaxos-model/model.gguf",
+        "gpuLayers": 0,
+        "threads": 2
+      },
+      "metadata": {
+        "details": {
+          "name": "jaxos-gguf",
+          "local": true,
+          "thinking": true,
+          "tools": true,
+          "ready": true,
+          "lifecycle": true,
+          "effectiveContext": 4096,
+          "maxContext": 40960,
+          "quantization": "Q4_K - Medium",
+          "parameterSize": "0.75B",
+          "runtimeVersion": "version: 0.5.0-dev (build 1, commit 631109b34)\nbuilt with GNU 13.3.1 for Linux x86_64",
+          "source": "/workspace/.cache/jaxos-model/model.gguf"
+        },
+        "files": {
+          "executable": {
+            "path": "/workspace/.tools/ollama/lib/ollama/llama-server",
+            "bytes": 15096,
+            "sha256": "234b05b2138264f8fb263c3205e85f4c290e8afe5067e280a4f6f90cdac5696b"
+          },
+          "model": {
+            "path": "/workspace/.cache/jaxos-model/model.gguf",
+            "bytes": 522640096,
+            "sha256": "7f4030143c1c477224c5434f8272c662a8b042079a0a584f0a27a1684fe2e1fa"
+          }
+        },
+        "runtime": {
+          "version": "version: 0.5.0-dev (build 1, commit 631109b34)\nbuilt with GNU 13.3.1 for Linux x86_64",
+          "contextTokens": 4096,
+          "requestedGpuLayers": 0,
+          "threads": 2
+        }
+      }
+    }
+  },
+  "results": [
+    {
+      "id": "heldout-analysis-denies-preview",
+      "status": "pass",
+      "detail": "Tool request rejected as expected.",
+      "durationMs": 0,
+      "observed": {
+        "allowed": false
+      }
+    },
+    {
+      "id": "heldout-design-allows-preview",
+      "status": "pass",
+      "detail": "Tool request accepted as expected.",
+      "durationMs": 0,
+      "observed": {
+        "allowed": true
+      }
+    },
+    {
+      "id": "heldout-unknown-tool",
+      "status": "pass",
+      "detail": "Tool request rejected as expected.",
+      "durationMs": 0,
+      "observed": {
+        "allowed": false
+      }
+    },
+    {
+      "id": "heldout-fault-erc",
+      "status": "pass",
+      "detail": "KiCad reported failed with 2 findings; source unchanged.",
+      "durationMs": 521,
+      "observed": {
+        "status": "failed",
+        "exitCode": 5,
+        "findings": 2,
+        "toolVersion": "9.0.2",
+        "inputFingerprint": "9bc2e024164aff4651982ac3d3262ae92225370469f7f7837097ac01b8e4eb5c",
+        "stale": false,
+        "sourceUnchanged": true
+      }
+    },
+    {
+      "id": "heldout-coordinator-model",
+      "status": "fail",
+      "detail": "Coordinator response did not meet the fixture criterion.",
+      "durationMs": 2823,
+      "observed": {
+        "status": "complete",
+        "text": "3 + 4 = 7",
+        "usage": {
+          "inputTokens": 140,
+          "outputTokens": 8,
+          "generationMs": 281.554
+        },
+        "finishReason": "stop",
+        "model": "jaxos-gguf",
+        "provider": "llamacpp",
+        "runtime": {
+          "running": true,
+          "owned": true,
+          "configured": true,
+          "contextTokens": 4096,
+          "gpuLayers": 0,
+          "version": "version: 0.5.0-dev (build 1, commit 631109b34)\nbuilt with GNU 13.3.1 for Linux x86_64",
+          "message": "JaxOS owns this llama.cpp process."
+        }
+      }
+    }
+  ]
+}

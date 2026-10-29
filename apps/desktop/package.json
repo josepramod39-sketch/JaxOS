@@ -1,0 +1,64 @@
+{
+  "name": "jaxos-desktop",
+  "version": "0.5.1",
+  "private": true,
+  "description": "A local assistant workspace with evidence-based KiCad checks.",
+  "author": "JaxOS",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "dist-electron/main.cjs",
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "build": "vite build && node scripts/build-electron.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "preview": "vite preview --host 127.0.0.1",
+    "start": "electron .",
+    "package:win": "node scripts/package-windows.mjs",
+    "eval": "node scripts/eval.mjs"
+  },
+  "dependencies": {
+    "lucide-react": "1.55.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.64.0",
+    "@types/node": "24.10.0",
+    "@types/react": "19.2.7",
+    "@types/react-dom": "19.2.3",
+    "@vitejs/plugin-react": "6.1.2",
+    "electron": "44.7.0",
+    "electron-builder": "26.15.3",
+    "esbuild": "0.28.2",
+    "typescript": "7.0.2",
+    "vite": "8.3.4",
+    "vitest": "5.0.3"
+  },
+  "build": {
+    "appId": "local.jaxos.desktop",
+    "productName": "JaxOS",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "dist-electron/**/*",
+      "package.json",
+      "LICENSE",
+      "THIRD-PARTY-NOTICES.md",
+      "evaluation/*.json",
+      "tests/fixtures/kicad/**/*",
+      "NOTICE"
+    ],
+    "asar": true,
+    "win": {
+      "target": "dir",
+      "signAndEditExecutable": false
+    },
+    "linux": {
+      "target": "dir"
+    }
+  }
+}

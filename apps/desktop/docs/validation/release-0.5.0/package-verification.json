@@ -1,0 +1,178 @@
+{
+  "schemaVersion": 1,
+  "status": "pass",
+  "checkedAt": "2026-10-29T04:27:07.783Z",
+  "version": "0.5.0",
+  "installer": {
+    "path": "/workspace/JaxOS-desktop/release/JaxOS-Setup-0.5.0-win-x64.exe",
+    "bytes": 113284850,
+    "sha256": "029b875624a207b3dd9e146db606d890c76778c1efa328fe26f3ef55954f9ff5",
+    "peMachine": "0x14c"
+  },
+  "extractedDirectory": "/workspace/.analysis/jaxos-v05-installer",
+  "appArchiveSha256": "e6558ac791031f411202ef6166638b4d00429a73aa2aef5c75812b84e218e7e9",
+  "application": {
+    "architecture": "x64",
+    "peMachine": "0x8664",
+    "sha256": "2cc02d04a412e1d0b72eb359bebc473130c53ac51b6e22c3d3f2f50e86343819"
+  },
+  "evaluationWrapperSha256": "8933fe3a24fe33543c8406383de2e06279b1b1915c548897e21172d90af5281d",
+  "payloadFilesVerified": 29,
+  "payload": [
+    {
+      "file": "dist/assets/index-BGBF8eV3.css",
+      "bytes": 37541,
+      "sha256": "20d22f0b1cdcdf6b5c105642d0b0b2354f5de80e9a5de73cc89ae427dc010fc8"
+    },
+    {
+      "file": "dist/assets/index-Mel-oXXL.js",
+      "bytes": 296559,
+      "sha256": "7f337abe4072bbb9a218b48e4d2ca37f6a0659aad395f19d284e973dd463330d"
+    },
+    {
+      "file": "dist/index.html",
+      "bytes": 731,
+      "sha256": "5cdb1c5f5360a1b9ab6627ed6497a5bfaa89a6ec5205c0f90f2d591daa79f99e"
+    },
+    {
+      "file": "dist-electron/eval.cjs",
+      "bytes": 125669,
+      "sha256": "77257b597686792cf608535dab81b58ef5532236bbaf3fd2f176dc380d095d01"
+    },
+    {
+      "file": "dist-electron/llama-host.cjs",
+      "bytes": 1669,
+      "sha256": "62f0b5e3d340514b98d25ee43df57b7857701ce056326c45894a6f7a76f9c250"
+    },
+    {
+      "file": "dist-electron/main.cjs",
+      "bytes": 22568,
+      "sha256": "dd9494b691ca20f6b78ec247caa117145a4681caf9131790b29a2a633c26cf17"
+    },
+    {
+      "file": "dist-electron/preload.cjs",
+      "bytes": 3827,
+      "sha256": "a0140801b3dfe5e3ef856706b302e3ffa4d7771f21dd98637179bd137c433291"
+    },
+    {
+      "file": "dist-electron/service-host.cjs",
+      "bytes": 161307,
+      "sha256": "30db84e0695cc69abcaedd84825d4c0e8f22f07bd01f0409ebb891da0ffb36d2"
+    },
+    {
+      "file": "evaluation/fixtures.json",
+      "bytes": 1871,
+      "sha256": "46413a650a5d5ecb0f99385cf38ad8b7aab4e835da78fd6999b5be76866b543c"
+    },
+    {
+      "file": "evaluation/heldout.json",
+      "bytes": 1016,
+      "sha256": "807d3d6a30244fded4a849785a2b466b01c06dd7648a9e51f6579ffa0ffadf7c"
+    },
+    {
+      "file": "evaluation/llama.json",
+      "bytes": 1949,
+      "sha256": "def11d75003531adf756d260834e7782b8b4e44f7132d48499a8fe2408f98947"
+    },
+    {
+      "file": "tests/fixtures/kicad/clean/fp-lib-table",
+      "bytes": 197,
+      "sha256": "b6a061c68da20d40ffd74e743f0ed8d64cbf620eb7a7a911596d99e1666849b3"
+    },
+    {
+      "file": "tests/fixtures/kicad/clean/library/Connector_Generic.kicad_sym",
+      "bytes": 2130,
+      "sha256": "663d7bdecf644932398c146b1228468a6d840a9be7c4706ce5d60dab31690459"
+    },
+    {
+      "file": "tests/fixtures/kicad/clean/library/Connector_PinHeader_2.54mm.pretty/PinHeader_1x02_P2.54mm_Vertical.kicad_mod",
+      "bytes": 2940,
+      "sha256": "d99c4d03937f72768bbafadda5817203e12c47cb823f3f40a55823bbdfe1e1b6"
+    },
+    {
+      "file": "tests/fixtures/kicad/clean/sym-lib-table",
+      "bytes": 188,
+      "sha256": "e026dd6bad5af4ef9c62397da27945bc5b47fa993d50b4d88500444aa0a74f2d"
+    },
+    {
+      "file": "tests/fixtures/kicad/clean/two-pin-link.kicad_pcb",
+      "bytes": 12309,
+      "sha256": "f273b3e2592cd8a0fdba3660fd89519153f85788f7bedefd90956a98a3a0e8cb"
+    },
+    {
+      "file": "tests/fixtures/kicad/clean/two-pin-link.kicad_pro",
+      "bytes": 8365,
+      "sha256": "1829d07880cff277f153faa71eb0add8b915df3bc474a967ab1e1355ce5dc6d0"
+    },
+    {
+      "file": "tests/fixtures/kicad/clean/two-pin-link.kicad_sch",
+      "bytes": 4226,
+      "sha256": "d5bf663b4ca16fbbcdbe816e7797ef16402bacefd5bc7852162ff5ce453633cb"
+    },
+    {
+      "file": "tests/fixtures/kicad/fault/fp-lib-table",
+      "bytes": 197,
+      "sha256": "b6a061c68da20d40ffd74e743f0ed8d64cbf620eb7a7a911596d99e1666849b3"
+    },
+    {
+      "file": "tests/fixtures/kicad/fault/library/Connector_Generic.kicad_sym",
+      "bytes": 2130,
+      "sha256": "663d7bdecf644932398c146b1228468a6d840a9be7c4706ce5d60dab31690459"
+    },
+    {
+      "file": "tests/fixtures/kicad/fault/library/Connector_PinHeader_2.54mm.pretty/PinHeader_1x02_P2.54mm_Vertical.kicad_mod",
+      "bytes": 2940,
+      "sha256": "d99c4d03937f72768bbafadda5817203e12c47cb823f3f40a55823bbdfe1e1b6"
+    },
+    {
+      "file": "tests/fixtures/kicad/fault/sym-lib-table",
+      "bytes": 188,
+      "sha256": "e026dd6bad5af4ef9c62397da27945bc5b47fa993d50b4d88500444aa0a74f2d"
+    },
+    {
+      "file": "tests/fixtures/kicad/fault/two-pin-link.kicad_pcb",
+      "bytes": 12171,
+      "sha256": "1c91cc3bfb153c04eeafc17f96748d574edbed3f96359d0c272f015e42531c9e"
+    },
+    {
+      "file": "tests/fixtures/kicad/fault/two-pin-link.kicad_pro",
+      "bytes": 8365,
+      "sha256": "1829d07880cff277f153faa71eb0add8b915df3bc474a967ab1e1355ce5dc6d0"
+    },
+    {
+      "file": "tests/fixtures/kicad/fault/two-pin-link.kicad_sch",
+      "bytes": 4099,
+      "sha256": "c0888ad1d0261d70e05c71e417704031aba9b88bc48913c834bb4fdd2c4dad68"
+    },
+    {
+      "file": "tests/fixtures/kicad/KICAD-FOOTPRINTS-COPYRIGHT",
+      "bytes": 19872,
+      "sha256": "48a86acd94e857211eac57a51700fc9b3d38539503c282e09ff9e9392fd6503f"
+    },
+    {
+      "file": "tests/fixtures/kicad/KICAD-SYMBOLS-COPYRIGHT",
+      "bytes": 19866,
+      "sha256": "644b9d38986937455970bf88b0aff7962262a3cbcaf24bf57cc7e1aff3c32fd4"
+    },
+    {
+      "file": "tests/fixtures/kicad/README.md",
+      "bytes": 1072,
+      "sha256": "85bc2bf99c7a547313001724dd8905a7eaef47aff85406a0c7738829dcffb6b6"
+    },
+    {
+      "file": "tests/fixtures/kicad/UPSTREAM-COPYRIGHT",
+      "bytes": 19891,
+      "sha256": "bb7f9d3b5ce98b74f8de7fcd9cdc3e9222ee0ac5ff1afcf3f069c22a7f36d17e"
+    }
+  ],
+  "checks": [
+    "Installer matches build receipt",
+    "Extracted archive matches receipt and staging",
+    "Archived version and entry match manifest",
+    "Extracted x64 application matches staging",
+    "Installed evaluation command matches source and receipt",
+    "Renderer, desktop bundles, evaluation suites and KiCad fixtures match current built inputs"
+  ],
+  "nativeWindowsValidated": false,
+  "limitations": "Static package verification on Linux. Does not execute Windows setup, upgrade, uninstall, cmd.exe, GPU drivers or native application runtime."
+}

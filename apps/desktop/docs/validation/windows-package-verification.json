@@ -1,0 +1,65 @@
+{
+  "verifiedAt": "2026-10-11T15:14:49.532Z",
+  "status": "passed",
+  "evidence": "Independent SHA-256, PE-header, archive-content, and validated-build comparisons; no Windows execution.",
+  "installer": {
+    "artifact": "JaxOS-Setup-0.1.0-win-x64.exe",
+    "bytes": 113237570,
+    "sha256": "beee14822d4c3d24001b38067dc76b48232cb176ce8fedfb86920a93c67215c0",
+    "matchesReceiptAndChecksumFile": true
+  },
+  "application": {
+    "archiveSha256": "b4cf4654140ebe965f7056f2e055bdaff3dea054f153274ff8eb9d9eba16df2d",
+    "matchesReceipt": true,
+    "peMachine": "0x8664 (x64)",
+    "main": "dist-electron/main.cjs",
+    "version": "0.1.0",
+    "licenseAndNoticesMatch": true,
+    "extractedInstallerArchiveMatches": true
+  },
+  "matchedFiles": [
+    {
+      "file": "dist/assets/index-DcRnEF6g.css",
+      "bytes": 33158,
+      "sha256": "1ffb633b78c2e990d3f905c1577424897e0d37c99ca417a932e73422391b627e",
+      "equalsAsarExtract": true,
+      "recordedInValidatedBuildManifest": true
+    },
+    {
+      "file": "dist/assets/index-Dx_vme-5.js",
+      "bytes": 274301,
+      "sha256": "b7e3f9e7e9756b67e4ceb1a4c7b77224e1fe53db235c5cf2b072cc52cb78bdaa",
+      "equalsAsarExtract": true,
+      "recordedInValidatedBuildManifest": true
+    },
+    {
+      "file": "dist/index.html",
+      "bytes": 731,
+      "sha256": "4c382e0ce741230299e7c0facd3877247127e95a6c67d5605d145e2861ac38c3",
+      "equalsAsarExtract": true,
+      "recordedInValidatedBuildManifest": false
+    },
+    {
+      "file": "dist-electron/main.cjs",
+      "bytes": 85387,
+      "sha256": "9b330f03c4989eb5f20e150ccff480b568854042f8b7fd8442d52950b46d1bef",
+      "equalsAsarExtract": true,
+      "recordedInValidatedBuildManifest": true
+    },
+    {
+      "file": "dist-electron/preload.cjs",
+      "bytes": 1768,
+      "sha256": "f1536c9342722664b6d2fb89c47290d07c909b7df48d752803ff4a0b384ec8a5",
+      "equalsAsarExtract": true,
+      "recordedInValidatedBuildManifest": true
+    }
+  ],
+  "testedBuildManifest": "/workspace/.analysis/jaxos-validation-final/validated-build.sha256",
+  "nativeWindowsValidated": false,
+  "remainingWindowsChecks": [
+    "Install and launch",
+    "Native file dialogs",
+    "Actual Windows KiCad execution",
+    "Upgrade and uninstall with user-data preservation"
+  ]
+}

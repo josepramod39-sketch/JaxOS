@@ -1,0 +1,280 @@
+{
+  "schemaVersion": 1,
+  "runId": "0d484055-8e13-4eec-a23f-f70012b943df",
+  "createdAt": "2026-10-28T13:30:32.309Z",
+  "suite": "jaxos-local-llama-v1",
+  "fixtureSha256": "def11d75003531adf756d260834e7782b8b4e44f7132d48499a8fe2408f98947",
+  "sourceSha256": "735018252b03cf9c10278afc38c9417fbaa99cec40855f6439ffe711761ede9f",
+  "environment": {
+    "identityKind": "source-tree-v2",
+    "node": "v24.19.0",
+    "platform": "linux",
+    "arch": "x64",
+    "kicad": {
+      "version": "9.0.2",
+      "path": "/usr/bin/kicad-cli"
+    },
+    "kicadFixturesSha256": "bb5a45a75b453ad71486a44147a12e44a5c6a7846b38691f0f938265a9998981",
+    "model": {
+      "provider": "llamacpp",
+      "model": "jaxos-gguf",
+      "profile": {
+        "contextTokens": 4096,
+        "outputTokens": 256,
+        "keepAliveSeconds": -1,
+        "thinking": "off",
+        "gpu": "cpu",
+        "temperature": 0
+      },
+      "metadata": {
+        "details": {
+          "name": "jaxos-gguf",
+          "local": true,
+          "thinking": true,
+          "tools": true,
+          "ready": true,
+          "lifecycle": true,
+          "effectiveContext": 4096,
+          "maxContext": 40960,
+          "quantization": "Q4_K - Medium",
+          "parameterSize": "0.75B",
+          "runtimeVersion": "version: 0.5.0-dev (build 1, commit 631109b34)\nbuilt with GNU 13.3.1 for Linux x86_64",
+          "source": "/workspace/.cache/jaxos-model/model.gguf"
+        },
+        "files": {
+          "executable": {
+            "path": "/workspace/.tools/ollama/lib/ollama/llama-server",
+            "bytes": 15096,
+            "sha256": "234b05b2138264f8fb263c3205e85f4c290e8afe5067e280a4f6f90cdac5696b"
+          },
+          "model": {
+            "path": "/workspace/.cache/jaxos-model/model.gguf",
+            "bytes": 522640096,
+            "sha256": "7f4030143c1c477224c5434f8272c662a8b042079a0a584f0a27a1684fe2e1fa"
+          }
+        },
+        "runtime": {
+          "version": "version: 0.5.0-dev (build 1, commit 631109b34)\nbuilt with GNU 13.3.1 for Linux x86_64",
+          "contextTokens": 4096,
+          "requestedGpuLayers": 0,
+          "threads": 2
+        }
+      }
+    }
+  },
+  "results": [
+    {
+      "id": "policy-plan-denies-drc",
+      "status": "pass",
+      "detail": "Tool request rejected as expected.",
+      "durationMs": 0,
+      "observed": {
+        "allowed": false
+      }
+    },
+    {
+      "id": "policy-test-allows-drc",
+      "status": "pass",
+      "detail": "Tool request accepted as expected.",
+      "durationMs": 0,
+      "observed": {
+        "allowed": true
+      }
+    },
+    {
+      "id": "policy-test-denies-path",
+      "status": "pass",
+      "detail": "Tool request rejected as expected.",
+      "durationMs": 0,
+      "observed": {
+        "allowed": false
+      }
+    },
+    {
+      "id": "context-latest-complete",
+      "status": "pass",
+      "detail": "Retained the latest complete input and excluded unfinished/older messages.",
+      "durationMs": 1,
+      "observed": {
+        "messages": [
+          {
+            "role": "system",
+            "content": "Be accurate."
+          },
+          {
+            "role": "user",
+            "content": "Latest requirement: 17"
+          }
+        ],
+        "omitted": 2
+      }
+    },
+    {
+      "id": "cancel-before-execution",
+      "status": "pass",
+      "detail": "Pre-cancelled request did not execute a tool.",
+      "durationMs": 2,
+      "observed": {
+        "executions": 0
+      }
+    },
+    {
+      "id": "kicad-clean-drc",
+      "status": "pass",
+      "detail": "KiCad reported passed with 0 findings; source unchanged.",
+      "durationMs": 1270,
+      "observed": {
+        "status": "passed",
+        "exitCode": 0,
+        "findings": 0,
+        "toolVersion": "9.0.2",
+        "inputFingerprint": "3affb3da7bee8af7fb4d5780bc64ee53289ab323be1e1613b97e6f296f2af434",
+        "stale": false,
+        "sourceUnchanged": true
+      }
+    },
+    {
+      "id": "kicad-fault-drc",
+      "status": "pass",
+      "detail": "KiCad reported failed with 3 findings; source unchanged.",
+      "durationMs": 1204,
+      "observed": {
+        "status": "failed",
+        "exitCode": 5,
+        "findings": 3,
+        "toolVersion": "9.0.2",
+        "inputFingerprint": "9bc2e024164aff4651982ac3d3262ae92225370469f7f7837097ac01b8e4eb5c",
+        "stale": false,
+        "sourceUnchanged": true
+      }
+    },
+    {
+      "id": "kicad-stale-snapshot",
+      "status": "pass",
+      "detail": "A changed source invalidated the successful snapshot result.",
+      "durationMs": 964,
+      "observed": {
+        "status": "passed",
+        "stale": true,
+        "sourceChanged": true,
+        "cancelled": false,
+        "toolVersion": "9.0.2"
+      }
+    },
+    {
+      "id": "kicad-active-cancel",
+      "status": "pass",
+      "detail": "Active KiCad job terminated with cancelled status.",
+      "durationMs": 646,
+      "observed": {
+        "status": "cancelled",
+        "stale": false,
+        "sourceChanged": false,
+        "cancelled": true,
+        "toolVersion": "9.0.2"
+      }
+    },
+    {
+      "id": "model-arithmetic",
+      "status": "fail",
+      "detail": "Response did not match the fixture answer.",
+      "durationMs": 7073,
+      "observed": {
+        "text": "2 + 2 = 4",
+        "reasoning": "",
+        "usage": {
+          "inputTokens": 28,
+          "outputTokens": 8,
+          "generationMs": 428.434
+        },
+        "finishReason": "stop"
+      }
+    },
+    {
+      "id": "coordinator-active-cancel",
+      "status": "pass",
+      "detail": "Coordinator state and request count satisfied the fixture.",
+      "durationMs": 1167,
+      "observed": {
+        "status": "cancelled",
+        "requests": 1,
+        "persisted": true
+      }
+    },
+    {
+      "id": "coordinator-crash-recovery",
+      "status": "pass",
+      "detail": "Coordinator state and request count satisfied the fixture.",
+      "durationMs": 1258,
+      "observed": {
+        "status": "error",
+        "finishReason": "interrupted",
+        "requests": 1,
+        "interruptedTask": true,
+        "partialPreserved": true
+      }
+    },
+    {
+      "id": "coordinator-model-arithmetic",
+      "status": "fail",
+      "detail": "Coordinator response did not meet the fixture criterion.",
+      "durationMs": 8050,
+      "observed": {
+        "status": "complete",
+        "text": "1. The question is: \"What is 2 + 2?\"  \n2. The answer is: 4.  \n3. Exactly one numeral is required.",
+        "usage": {
+          "inputTokens": 140,
+          "outputTokens": 35,
+          "generationMs": 2386.142
+        },
+        "finishReason": "stop",
+        "model": "jaxos-gguf",
+        "provider": "llamacpp",
+        "runtime": {
+          "running": true,
+          "owned": true,
+          "configured": true,
+          "contextTokens": 4096,
+          "gpuLayers": 0,
+          "version": "version: 0.5.0-dev (build 1, commit 631109b34)\nbuilt with GNU 13.3.1 for Linux x86_64",
+          "message": "JaxOS owns this llama.cpp process."
+        }
+      }
+    },
+    {
+      "id": "llama-managed-lifecycle",
+      "status": "pass",
+      "detail": "Managed model loaded with the requested context, cancelled streaming and unloaded.",
+      "durationMs": 3965,
+      "observed": {
+        "requestedContext": 4096,
+        "effectiveContext": 4096,
+        "loaded": {
+          "running": true,
+          "owned": true
+        },
+        "cancellation": {
+          "partialCharacters": 4,
+          "aborted": true,
+          "rejected": true
+        },
+        "recovery": {
+          "text": "Say ready. Let me know what you need! 😊",
+          "reasoning": "",
+          "usage": {
+            "inputTokens": 15,
+            "outputTokens": 13,
+            "generationMs": 1015.273
+          },
+          "finishReason": "stop"
+        },
+        "unloaded": {
+          "running": false,
+          "owned": false,
+          "remainingModels": 0
+        },
+        "runtimeVersion": "version: 0.5.0-dev (build 1, commit 631109b34)\nbuilt with GNU 13.3.1 for Linux x86_64"
+      }
+    }
+  ]
+}

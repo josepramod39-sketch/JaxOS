@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "suite": "jaxos-local-heldout-v1",
+  "cases": [
+    {
+      "id": "heldout-analysis-denies-preview",
+      "kind": "policy",
+      "stage": "analysis",
+      "tool": "project_run",
+      "arguments": {
+        "kind": "preview"
+      },
+      "allowed": false
+    },
+    {
+      "id": "heldout-design-allows-preview",
+      "kind": "policy",
+      "stage": "design",
+      "tool": "project_run",
+      "arguments": {
+        "kind": "preview"
+      },
+      "allowed": true
+    },
+    {
+      "id": "heldout-unknown-tool",
+      "kind": "policy",
+      "stage": "test",
+      "tool": "shell",
+      "arguments": {},
+      "allowed": false
+    },
+    {
+      "id": "heldout-fault-erc",
+      "kind": "kicad",
+      "project": "fault",
+      "run": "erc",
+      "expected": "failed"
+    },
+    {
+      "id": "heldout-coordinator-model",
+      "kind": "coordinator-model",
+      "prompt": "Reply with only the number: what is 3 + 4? /no_think",
+      "expectedPattern": "^7[.!]?$"
+    }
+  ]
+}

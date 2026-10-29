@@ -1,0 +1,74 @@
+{
+  "verifiedAt": "2026-10-20T08:47:05.329Z",
+  "status": "passed",
+  "evidence": "Independent SHA-256, PE-header, extracted installer archive, and tested-build byte comparisons. No Windows execution.",
+  "installer": {
+    "artifact": "JaxOS-Setup-0.2.0-win-x64.exe",
+    "bytes": 113260000,
+    "sha256": "6a98971450cd85754e69e2f448b56709bbbacfc7edbd19f9b24acc783640a94b",
+    "matchesReceipt": true
+  },
+  "application": {
+    "archiveSha256": "e87e607ca28d27caadfbf5c10d34a42b0d7ee9b69576345eb6bd34054288337b",
+    "matchesReceipt": true,
+    "peMachine": "0x8664 (x64)",
+    "main": "dist-electron/main.cjs",
+    "version": "0.2.0",
+    "coordinatorIncluded": true,
+    "licenseAndNoticesMatch": true,
+    "extractedInstallerArchiveMatches": true
+  },
+  "matchedFiles": [
+    {
+      "file": "dist/assets/index-38ha9yje.css",
+      "bytes": 34654,
+      "sha256": "b715521e5bc4c12fac9ce67db0efb6a480e0048ebaebff41dfeb469fe2c8d446",
+      "equalsAsarExtract": true,
+      "recordedInValidatedBuildManifest": true
+    },
+    {
+      "file": "dist/assets/index-CDcqpY1T.js",
+      "bytes": 283860,
+      "sha256": "c0633172fb07db9701fb9662e872fcce903504a69e65d2b417dc84a5d6b09f5f",
+      "equalsAsarExtract": true,
+      "recordedInValidatedBuildManifest": true
+    },
+    {
+      "file": "dist/index.html",
+      "bytes": 731,
+      "sha256": "9de9056524d63e08c048eda607316dc8e9fb2f7c0d8774dd0fb498e534dc713e",
+      "equalsAsarExtract": true,
+      "recordedInValidatedBuildManifest": true
+    },
+    {
+      "file": "dist-electron/main.cjs",
+      "bytes": 20255,
+      "sha256": "069899a3119920f6b0b973d76547603004caafdfbc8a538790c7812300447ecc",
+      "equalsAsarExtract": true,
+      "recordedInValidatedBuildManifest": true
+    },
+    {
+      "file": "dist-electron/preload.cjs",
+      "bytes": 2459,
+      "sha256": "ff53f4dc217ce669d1159da34e07910dc8337d5a9d2d29716244bf7ad724fb18",
+      "equalsAsarExtract": true,
+      "recordedInValidatedBuildManifest": true
+    },
+    {
+      "file": "dist-electron/service-host.cjs",
+      "bytes": 100786,
+      "sha256": "685074508562834465bbebc078884ef794c05b0b7c03d516b96e1e78b4711f6d",
+      "equalsAsarExtract": true,
+      "recordedInValidatedBuildManifest": true
+    }
+  ],
+  "testedBuildManifest": "docs/validation/electron-0.2.0/validated-build.sha256",
+  "nativeWindowsValidated": false,
+  "remainingWindowsChecks": [
+    "Install/upgrade/uninstall",
+    "Native file dialogs",
+    "Tray continuation and coordinator cleanup",
+    "Windows KiCad execution",
+    "GPU placement/capacity"
+  ]
+}
