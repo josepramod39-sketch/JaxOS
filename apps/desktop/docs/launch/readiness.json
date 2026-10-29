@@ -2,7 +2,7 @@
   "version": "0.5.1",
   "state": "prepared-not-published",
   "sourceLicense": "Apache-2.0",
-  "githubAccess": "invalid supplied GH_TOKEN; repository API unavailable",
+  "githubAccess": "Git read/write verified; review branch pushed. Plugin API tools not exposed; separate CLI API credential unavailable.",
   "nativeWindowsAcceptance": "not-run",
   "demoVideo": "storyboard prepared; Windows capture pending",
   "publicUrlMarkers": {
@@ -20,7 +20,7 @@
     ]
   },
   "nativeCollector": "PowerShell script prepared; not executed on Windows",
-  "workflowTemplate": "YAML parsed locally; not run",
+  "workflowTemplate": "YAML parsed; review-branch push trigger configured. Execution outcome not yet verified.",
   "unitTests": {
     "passed": 86,
     "failed": 0

@@ -1,7 +1,12 @@
 # Copy to repository-root .github/workflows/windows-alpha.yml after adding apps/desktop.
-# Manual validation only. This workflow does not publish releases or posts.
+# Review-branch validation only. This workflow does not publish releases or posts.
 name: Windows desktop alpha acceptance
 "on":
+  push:
+    branches: [codex/desktop-public-alpha]
+    paths:
+      - apps/desktop/**
+      - .github/workflows/windows-alpha.yml
   workflow_dispatch:
 permissions:
   contents: read
