@@ -25,10 +25,22 @@ jobs:
           node-version: '24'
           cache: npm
           cache-dependency-path: apps/desktop/package-lock.json
-      - run: npm ci
-      - run: npm run typecheck
-      - run: npm run build
-      - run: npm run package:win
+      - name: Install locked desktop dependencies
+        run: |
+          npm ci 2>&1 | Tee-Object -FilePath (Join-Path $env:RUNNER_TEMP 'jaxos-install.log')
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Check desktop TypeScript
+        run: |
+          npm run typecheck 2>&1 | Tee-Object -FilePath (Join-Path $env:RUNNER_TEMP 'jaxos-typecheck.log')
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Build desktop application
+        run: |
+          npm run build 2>&1 | Tee-Object -FilePath (Join-Path $env:RUNNER_TEMP 'jaxos-build.log')
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Package Windows installer
+        run: |
+          npm run package:win 2>&1 | Tee-Object -FilePath (Join-Path $env:RUNNER_TEMP 'jaxos-package.log')
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
       - name: Extract the new installer and verify payload
         run: |
           $extract = Join-Path $env:RUNNER_TEMP 'jaxos-installer-extracted'
@@ -54,5 +66,6 @@ jobs:
             apps/desktop/release/*verification*.json
             apps/desktop/release/windows-native-partial.json
             apps/desktop/release/SHA256SUMS
+            ${{ runner.temp }}/jaxos-*.log
           if-no-files-found: warn
 # Fresh installation/CLI checks do not establish GUI, model, KiCad, upgrades or uninstall acceptance.
