@@ -5,6 +5,9 @@ name: Inspect desktop CI results
     branches: [codex/publish-desktop-alpha]
     paths: [.github/workflows/inspect-desktop-ci.yml]
   workflow_dispatch:
+concurrency:
+  group: desktop-ci-observation
+  cancel-in-progress: true
 permissions:
   contents: write
   actions: read
@@ -47,7 +50,11 @@ jobs:
           reportRepo="$RUNNER_TEMP/desktop-ci-report"
           git init -b codex/desktop-ci-status "$reportRepo"
           cd "$reportRepo"
-          git remote add origin "https://github.com/$GITHUB_REPOSITORY.git"
+          if git remote get-url origin >/dev/null 2>&1; then
+            git remote set-url origin "https://github.com/$GITHUB_REPOSITORY.git"
+          else
+            git remote add origin "https://github.com/$GITHUB_REPOSITORY.git"
+          fi
           if git ls-remote --exit-code origin refs/heads/codex/desktop-ci-status >/dev/null 2>&1; then
             git fetch origin codex/desktop-ci-status
             git reset --hard FETCH_HEAD
