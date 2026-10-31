@@ -3,8 +3,8 @@
     "id": 41174577552,
     "html_url": "https://github.com/josepramod39-sketch/JaxOS/actions/runs/41174577552",
     "head_sha": "8912af15e855ed6622500417042a8e4cd5c79af5",
-    "status": "in_progress",
-    "conclusion": null
+    "status": "completed",
+    "conclusion": "failure"
   },
   "publication": {
     "id": 41174578741,
