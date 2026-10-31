@@ -1,6 +1,6 @@
 JaxOS Desktop combines local-model conversations with KiCad project checks in a Windows workspace. This is an **unsigned experimental prerelease** for early testers.
 
-**Native Windows acceptance has not passed. The Windows packaging CI job failed, and its cause remains unresolved.** This installer is cross-built on Linux; successful packaging and archive verification do not establish that it installs or runs correctly on your Windows machine. Use a dedicated test account or VM and a copy of a non-sensitive project initially.
+**Native Windows acceptance remains incomplete. The earlier packaging failure came from two omitted packaging-source files; this release includes those files and checks for them before building.** This installer is cross-built on Linux; successful packaging and archive verification do not establish that it installs or runs correctly on your Windows machine. Use a dedicated test account or VM and a copy of a non-sensitive project initially.
 
 ### Download and try
 
