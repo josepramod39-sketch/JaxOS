@@ -1,15 +1,13 @@
 {
-  "tag": "desktop-v0.5.1-alpha.1",
-  "sourceCommit": "8d44727d2342f97dd1ab3a79df59c5bdeef0d20f",
-  "build": "success",
   "publication": "success",
-  "runUrl": "https://github.com/josepramod39-sketch/JaxOS/actions/runs/41175256076",
-  "nativeWindowsValidated": false,
+  "sourceArchiveVerified": true,
   "releaseUrl": "https://github.com/josepramod39-sketch/JaxOS/releases/tag/desktop-v0.5.1-alpha.1",
+  "sourceCommit": "c48d52dac140e9cd1070b67d7f8b2dafc2304118",
+  "nativeWindowsValidated": false,
   "assets": [
     {
       "name": "JaxOS-Desktop-0.5.1-source.zip",
-      "bytes": 156,
+      "bytes": 32547640,
       "url": "https://github.com/josepramod39-sketch/JaxOS/releases/download/desktop-v0.5.1-alpha.1/JaxOS-Desktop-0.5.1-source.zip"
     },
     {
