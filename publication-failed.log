@@ -1,0 +1,30 @@
+publish	Publish prerelease and verify uploaded assets	﻿2026-10-31T06:00:52.0245535Z ##[group]Run set -euo pipefail
+publish	Publish prerelease and verify uploaded assets	2026-10-31T06:00:52.0245986Z ^[[36;1mset -euo pipefail^[[0m
+publish	Publish prerelease and verify uploaded assets	2026-10-31T06:00:52.0246408Z ^[[36;1massets="$(find publication -name SHA256SUMS-0.5.1 -printf '%h\n' -quit)"^[[0m
+publish	Publish prerelease and verify uploaded assets	2026-10-31T06:00:52.0246804Z ^[[36;1mtest -n "$assets"^[[0m
+publish	Publish prerelease and verify uploaded assets	2026-10-31T06:00:52.0247082Z ^[[36;1mcd "$assets"^[[0m
+publish	Publish prerelease and verify uploaded assets	2026-10-31T06:00:52.0247338Z ^[[36;1msha256sum --check SHA256SUMS-0.5.1^[[0m
+publish	Publish prerelease and verify uploaded assets	2026-10-31T06:00:52.0248539Z ^[[36;1mgh release create "$ALPHA_TAG" --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --draft --prerelease --latest=false --title 'JaxOS Desktop 0.5.1 — Windows alpha 1 (unsigned)' --notes-file RELEASE-NOTES.md JaxOS-Setup-0.5.1-win-x64.exe JaxOS-Desktop-0.5.1-source.zip SHA256SUMS-0.5.1 windows-build-receipt-0.5.1.json package-verification-0.5.1.json LICENSE NOTICE THIRD-PARTY-NOTICES.md^[[0m
+publish	Publish prerelease and verify uploaded assets	2026-10-31T06:00:52.0249843Z ^[[36;1mgh api "repos/$GITHUB_REPOSITORY/releases/tags/$ALPHA_TAG" > "$GITHUB_WORKSPACE/release-result.json"^[[0m
+publish	Publish prerelease and verify uploaded assets	2026-10-31T06:00:52.0250253Z ^[[36;1mpython3 - <<'PY'^[[0m
+publish	Publish prerelease and verify uploaded assets	2026-10-31T06:00:52.0250610Z ^[[36;1mimport json,os^[[0m
+publish	Publish prerelease and verify uploaded assets	2026-10-31T06:00:52.0250853Z ^[[36;1mfrom pathlib import Path^[[0m
+publish	Publish prerelease and verify uploaded assets	2026-10-31T06:00:52.0251343Z ^[[36;1mr=json.loads(Path(os.environ['GITHUB_WORKSPACE'],'release-result.json').read_text())^[[0m
+publish	Publish prerelease and verify uploaded assets	2026-10-31T06:00:52.0252159Z ^[[36;1mrequired={'JaxOS-Setup-0.5.1-win-x64.exe','JaxOS-Desktop-0.5.1-source.zip','SHA256SUMS-0.5.1','windows-build-receipt-0.5.1.json','package-verification-0.5.1.json','LICENSE','NOTICE','THIRD-PARTY-NOTICES.md'}^[[0m
+publish	Publish prerelease and verify uploaded assets	2026-10-31T06:00:52.0252870Z ^[[36;1massert r['prerelease'] and r['draft']^[[0m
+publish	Publish prerelease and verify uploaded assets	2026-10-31T06:00:52.0253560Z ^[[36;1massert required <= {a['name'] for a in r['assets']}^[[0m
+publish	Publish prerelease and verify uploaded assets	2026-10-31T06:00:52.0254020Z ^[[36;1massert all(a['state']=='uploaded' and a['size']>0 for a in r['assets'] if a['name'] in required)^[[0m
+publish	Publish prerelease and verify uploaded assets	2026-10-31T06:00:52.0254421Z ^[[36;1mprint(r['html_url'])^[[0m
+publish	Publish prerelease and verify uploaded assets	2026-10-31T06:00:52.0254668Z ^[[36;1mPY^[[0m
+publish	Publish prerelease and verify uploaded assets	2026-10-31T06:00:52.0255075Z ^[[36;1mgh release edit "$ALPHA_TAG" --repo "$GITHUB_REPOSITORY" --draft=false --prerelease --latest=false^[[0m
+publish	Publish prerelease and verify uploaded assets	2026-10-31T06:00:52.0255637Z ^[[36;1mgh api "repos/$GITHUB_REPOSITORY/releases/tags/$ALPHA_TAG" > "$GITHUB_WORKSPACE/release-result.json"^[[0m
+publish	Publish prerelease and verify uploaded assets	2026-10-31T06:00:52.0256522Z ^[[36;1mpython3 -c 'import json,os; from pathlib import Path; r=json.loads(Path(os.environ["GITHUB_WORKSPACE"],"release-result.json").read_text()); assert r["prerelease"] and not r["draft"]'^[[0m
+publish	Publish prerelease and verify uploaded assets	2026-10-31T06:00:52.0292160Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+publish	Publish prerelease and verify uploaded assets	2026-10-31T06:00:52.0292576Z env:
+publish	Publish prerelease and verify uploaded assets	2026-10-31T06:00:52.0292819Z   ALPHA_TAG: desktop-v0.5.1-alpha.1
+publish	Publish prerelease and verify uploaded assets	2026-10-31T06:00:52.0294916Z   GH_TOKEN: ***
+publish	Publish prerelease and verify uploaded assets	2026-10-31T06:00:52.0295176Z ##[endgroup]
+publish	Publish prerelease and verify uploaded assets	2026-10-31T06:00:52.1117961Z JaxOS-Setup-0.5.1-win-x64.exe: OK
+publish	Publish prerelease and verify uploaded assets	2026-10-31T06:00:52.1118583Z JaxOS-Desktop-0.5.1-source.zip: OK
+publish	Publish prerelease and verify uploaded assets	2026-10-31T06:00:54.7274281Z HTTP 403: Resource not accessible by integration (https://api.github.com/repos/josepramod39-sketch/JaxOS/releases)
+publish	Publish prerelease and verify uploaded assets	2026-10-31T06:00:54.7303599Z ##[error]Process completed with exit code 1.
