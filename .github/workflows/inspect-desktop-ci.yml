@@ -1,0 +1,54 @@
+name: Inspect desktop CI results
+"on":
+  push:
+    branches: [codex/publish-desktop-alpha]
+    paths: [.github/workflows/inspect-desktop-ci.yml]
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: read
+jobs:
+  inspect:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Collect desktop CI results and failed Windows log
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh api --method GET "repos/$GITHUB_REPOSITORY/actions/runs" -f branch=codex/desktop-public-alpha -f per_page=10 > "$RUNNER_TEMP/windows-runs.json"
+          gh api --method GET "repos/$GITHUB_REPOSITORY/actions/runs" -f branch=codex/publish-desktop-alpha -f per_page=10 > "$RUNNER_TEMP/publication-runs.json"
+          python3 - <<'PY'
+          import json,os
+          from pathlib import Path
+          temp=Path(os.environ['RUNNER_TEMP'])
+          windows=json.loads((temp/'windows-runs.json').read_text())['workflow_runs']
+          publication=json.loads((temp/'publication-runs.json').read_text())['workflow_runs']
+          result={}
+          for name,runs,path in [('windows',windows,'.github/workflows/windows-alpha.yml'),('publication',publication,'.github/workflows/publish-desktop-alpha.yml')]:
+            run=next((r for r in runs if r['path']==path),None)
+            result[name]={k:run.get(k) for k in ['id','html_url','head_sha','status','conclusion']} if run else None
+          (temp/'desktop-ci-status.json').write_text(json.dumps(result,indent=2)+'\n')
+          (temp/'windows-run-id').write_text(str(result['windows']['id']) if result['windows'] else '')
+          PY
+          runId="$(cat "$RUNNER_TEMP/windows-run-id")"
+          if [ -n "$runId" ]; then
+            gh run view "$runId" --repo "$GITHUB_REPOSITORY" --log-failed > "$RUNNER_TEMP/windows-failed.log" 2>&1 || true
+          fi
+          gh auth setup-git --hostname github.com
+          reportRepo="$RUNNER_TEMP/desktop-ci-report"
+          git init -b codex/desktop-ci-status "$reportRepo"
+          cd "$reportRepo"
+          git remote add origin "https://github.com/$GITHUB_REPOSITORY.git"
+          if git ls-remote --exit-code origin refs/heads/codex/desktop-ci-status >/dev/null 2>&1; then
+            git fetch origin codex/desktop-ci-status
+            git reset --hard FETCH_HEAD
+          fi
+          cp "$RUNNER_TEMP/desktop-ci-status.json" desktop-ci-status.json
+          if [ -f "$RUNNER_TEMP/windows-failed.log" ]; then cp "$RUNNER_TEMP/windows-failed.log" windows-failed.log; fi
+          git add .
+          git -c user.name=github-actions\[bot\] -c user.email=41898282+github-actions\[bot\]@users.noreply.github.com commit --allow-empty -m "Record desktop CI status $GITHUB_RUN_ID"
+          git push origin HEAD:refs/heads/codex/desktop-ci-status
