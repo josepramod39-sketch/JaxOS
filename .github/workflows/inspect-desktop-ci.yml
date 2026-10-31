@@ -1,5 +1,5 @@
 name: Inspect desktop CI results
-# Observe corrected Windows and publication runs until they finish.
+# Observe corrected Windows/publication runs, including release-upload errors.
 "on":
   push:
     branches: [codex/publish-desktop-alpha]
@@ -39,12 +39,17 @@ jobs:
             result[name]={k:run.get(k) for k in ['id','html_url','head_sha','status','conclusion']} if run else None
           (temp/'desktop-ci-status.json').write_text(json.dumps(result,indent=2)+'\n')
           (temp/'windows-run-id').write_text(str(result['windows']['id']) if result['windows'] else '')
+          (temp/'publication-run-id').write_text(str(result['publication']['id']) if result['publication'] else '')
           done=all(result[k] and result[k]['head_sha'].startswith(sha) and result[k]['status']=='completed' for k,sha in [('windows','8912af1'),('publication','8d44727')])
           (temp/'ci-observation-done').write_text('yes' if done else 'no')
           PY
           runId="$(cat "$RUNNER_TEMP/windows-run-id")"
           if [ -n "$runId" ]; then
             gh run view "$runId" --repo "$GITHUB_REPOSITORY" --log-failed > "$RUNNER_TEMP/windows-failed.log" 2>&1 || true
+          fi
+          publicationId="$(cat "$RUNNER_TEMP/publication-run-id")"
+          if [ -n "$publicationId" ]; then
+            gh run view "$publicationId" --repo "$GITHUB_REPOSITORY" --log-failed > "$RUNNER_TEMP/publication-failed.log" 2>&1 || true
           fi
           gh auth setup-git --hostname github.com
           reportRepo="$RUNNER_TEMP/desktop-ci-report"
@@ -61,6 +66,7 @@ jobs:
           fi
           cp "$RUNNER_TEMP/desktop-ci-status.json" desktop-ci-status.json
           if [ -f "$RUNNER_TEMP/windows-failed.log" ]; then cp "$RUNNER_TEMP/windows-failed.log" windows-failed.log; fi
+          if [ -f "$RUNNER_TEMP/publication-failed.log" ]; then cp "$RUNNER_TEMP/publication-failed.log" publication-failed.log; fi
           git add .
           if ! git diff --cached --quiet; then
             git -c user.name=github-actions\[bot\] -c user.email=41898282+github-actions\[bot\]@users.noreply.github.com commit -m "Record desktop CI status $GITHUB_RUN_ID"
