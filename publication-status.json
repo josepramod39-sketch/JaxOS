@@ -1,8 +1,8 @@
 {
   "tag": "desktop-v0.5.1-alpha.1",
-  "sourceCommit": "a806781acaa2c1b17c3acf9d8b27d1c9f3ef2791",
-  "build": "failure",
-  "publication": "skipped",
-  "runUrl": "https://github.com/josepramod39-sketch/JaxOS/actions/runs/41174406563",
+  "sourceCommit": "8d44727d2342f97dd1ab3a79df59c5bdeef0d20f",
+  "build": "success",
+  "publication": "failure",
+  "runUrl": "https://github.com/josepramod39-sketch/JaxOS/actions/runs/41174578741",
   "nativeWindowsValidated": false
 }
