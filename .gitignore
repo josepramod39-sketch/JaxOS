@@ -4,3 +4,9 @@ dist/
 build/
 .DS_Store
 *.log
+
+# Desktop packaging sources are inputs, not generated build output.
+!apps/desktop/build/
+apps/desktop/build/*
+!apps/desktop/build/evaluate.cmd
+!apps/desktop/build/installer.nsi
