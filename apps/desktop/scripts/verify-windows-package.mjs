@@ -84,7 +84,8 @@ const files = [
 const payload = [];
 for (const file of files) {
   const expected = await readFile(path.join(root, file));
-  const actual = extractFile(archive, file);
+  // ASAR traverses directories with the host path separator.
+  const actual = extractFile(archive, path.normalize(file));
   assert.deepEqual(actual, expected, `Archived payload differs from built input: ${file}`);
   payload.push({ file, bytes: actual.length, sha256: hash(actual) });
 }
