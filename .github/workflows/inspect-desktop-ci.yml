@@ -1,5 +1,5 @@
 name: Inspect desktop CI results
-# Observe corrected Windows/publication runs, including release-upload errors.
+# Observe final release upload and corrected Windows archive verification.
 "on":
   push:
     branches: [codex/publish-desktop-alpha]
@@ -34,13 +34,13 @@ jobs:
           windows=json.loads((temp/'windows-runs.json').read_text())['workflow_runs']
           publication=json.loads((temp/'publication-runs.json').read_text())['workflow_runs']
           result={}
-          for name,runs,path in [('windows',windows,'.github/workflows/windows-alpha.yml'),('publication',publication,'.github/workflows/publish-desktop-alpha.yml')]:
-            run=next((r for r in runs if r['path']==path),None)
+          for name,runs,path in [('windows',windows,'.github/workflows/windows-alpha.yml'),('publication',publication,('.github/workflows/finalize-desktop-alpha.yml','.github/workflows/publish-desktop-alpha.yml'))]:
+            run=next((r for r in runs if r['path'] in (path if isinstance(path,tuple) else (path,))),None)
             result[name]={k:run.get(k) for k in ['id','html_url','head_sha','status','conclusion']} if run else None
           (temp/'desktop-ci-status.json').write_text(json.dumps(result,indent=2)+'\n')
           (temp/'windows-run-id').write_text(str(result['windows']['id']) if result['windows'] else '')
           (temp/'publication-run-id').write_text(str(result['publication']['id']) if result['publication'] else '')
-          done=all(result[k] and result[k]['head_sha'].startswith(sha) and result[k]['status']=='completed' for k,sha in [('windows','8912af1'),('publication','8d44727')])
+          done=all(result[k] and result[k]['head_sha'].startswith(sha) and result[k]['status']=='completed' for k,sha in [('windows','4dd8cad'),('publication','81e4bcb')])
           (temp/'ci-observation-done').write_text('yes' if done else 'no')
           PY
           runId="$(cat "$RUNNER_TEMP/windows-run-id")"
