@@ -1,0 +1,66 @@
+name: Finalize verified desktop alpha release
+'on':
+  push:
+    branches:
+    - codex/publish-desktop-alpha
+    paths:
+    - .github/workflows/finalize-desktop-alpha.yml
+  workflow_dispatch: null
+concurrency:
+  group: finalize-desktop-alpha
+  cancel-in-progress: false
+permissions:
+  contents: read
+env:
+  ALPHA_TAG: desktop-v0.5.1-alpha.1
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: write
+      actions: read
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/download-artifact@v4
+      id: download
+      with:
+        name: jaxos-desktop-publication
+        path: publication
+        github-token: ${{ github.token }}
+        run-id: 41174578741
+    - name: Publish prerelease and verify uploaded assets
+      id: release
+      env:
+        GH_TOKEN: ${{ github.token }}
+      shell: bash
+      run: "set -euo pipefail\nassets=\"$(find publication -name SHA256SUMS-0.5.1 -printf '%h\\n' -quit)\"\ntest -n \"$assets\"\
+        \ncd \"$assets\"\nsha256sum --check SHA256SUMS-0.5.1\ngh release create \"$ALPHA_TAG\" --repo \"$GITHUB_REPOSITORY\"\
+        \ --verify-tag --draft --prerelease --title 'JaxOS Desktop 0.5.1 \u2014 Windows alpha 1 (unsigned)' --notes-file RELEASE-NOTES.md\
+        \ JaxOS-Setup-0.5.1-win-x64.exe JaxOS-Desktop-0.5.1-source.zip SHA256SUMS-0.5.1 windows-build-receipt-0.5.1.json package-verification-0.5.1.json\
+        \ LICENSE NOTICE THIRD-PARTY-NOTICES.md\ngh api \"repos/$GITHUB_REPOSITORY/releases/tags/$ALPHA_TAG\" > \"$GITHUB_WORKSPACE/release-result.json\"\
+        \npython3 - <<'PY'\nimport json,os\nfrom pathlib import Path\nr=json.loads(Path(os.environ['GITHUB_WORKSPACE'],'release-result.json').read_text())\n\
+        required={'JaxOS-Setup-0.5.1-win-x64.exe','JaxOS-Desktop-0.5.1-source.zip','SHA256SUMS-0.5.1','windows-build-receipt-0.5.1.json','package-verification-0.5.1.json','LICENSE','NOTICE','THIRD-PARTY-NOTICES.md'}\n\
+        assert r['prerelease'] and r['draft']\nassert required <= {a['name'] for a in r['assets']}\nassert all(a['state']=='uploaded'\
+        \ and a['size']>0 for a in r['assets'] if a['name'] in required)\nprint(r['html_url'])\nPY\ngh release edit \"$ALPHA_TAG\"\
+        \ --repo \"$GITHUB_REPOSITORY\" --draft=false --prerelease\ngh api \"repos/$GITHUB_REPOSITORY/releases/tags/$ALPHA_TAG\"\
+        \ > \"$GITHUB_WORKSPACE/release-result.json\"\npython3 -c 'import json,os; from pathlib import Path; r=json.loads(Path(os.environ[\"\
+        GITHUB_WORKSPACE\"],\"release-result.json\").read_text()); assert r[\"prerelease\"] and not r[\"draft\"]'\n"
+    - name: Record publication outcome in repository
+      if: always()
+      env:
+        GH_TOKEN: ${{ github.token }}
+        BUILD_RESULT: success
+        RELEASE_RESULT: ${{ steps.release.outcome }}
+        SOURCE_SHA: 8d44727d2342f97dd1ab3a79df59c5bdeef0d20f
+      shell: bash
+      run: "set -euo pipefail\npython3 - <<'PY'\nimport json,os\nfrom pathlib import Path\nreport={'tag':os.environ['ALPHA_TAG'],'sourceCommit':os.environ['SOURCE_SHA'],'build':os.environ['BUILD_RESULT'],'publication':os.environ['RELEASE_RESULT'],'runUrl':f\"\
+        https://github.com/{os.environ['GITHUB_REPOSITORY']}/actions/runs/{os.environ['GITHUB_RUN_ID']}\",'nativeWindowsValidated':False}\n\
+        result=Path('release-result.json')\nif result.exists():\n  r=json.loads(result.read_text());report['releaseUrl']=r['html_url'];report['assets']=[{'name':a['name'],'bytes':a['size'],'url':a['browser_download_url']}\
+        \ for a in r['assets']]\nPath(os.environ['RUNNER_TEMP'],'publication-status.json').write_text(json.dumps(report,indent=2)+'\\\
+        n')\nPY\ngh auth setup-git --hostname github.com\nstatusRepo=\"$RUNNER_TEMP/publication-status-repo\"\ngit init -b\
+        \ codex/desktop-alpha-publication-status \"$statusRepo\"\ncd \"$statusRepo\"\ngit remote add origin \"https://github.com/$GITHUB_REPOSITORY.git\"\
+        \nif git ls-remote --exit-code origin refs/heads/codex/desktop-alpha-publication-status >/dev/null 2>&1; then\n  git\
+        \ fetch origin codex/desktop-alpha-publication-status\n  git reset --hard FETCH_HEAD\nfi\ncp \"$RUNNER_TEMP/publication-status.json\"\
+        \ publication-status.json\ngit add publication-status.json\ngit -c user.name=github-actions\\[bot\\] -c user.email=41898282+github-actions\\\
+        [bot\\]@users.noreply.github.com commit -m \"Record desktop alpha publication $GITHUB_RUN_ID\"\ngit push origin HEAD:refs/heads/codex/desktop-alpha-publication-status\n"
