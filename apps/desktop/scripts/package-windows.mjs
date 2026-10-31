@@ -16,7 +16,10 @@ const release = path.join(root, 'release');
 const staging = path.join(release, 'win-unpacked');
 const installer = path.join(release, `JaxOS-Setup-${version}-win-x64.exe`);
 await mkdir(release, { recursive: true });
-await access(path.join(root, 'dist-electron', 'eval.cjs'));
+for (const file of ['dist-electron/eval.cjs', 'build/evaluate.cmd', 'build/installer.nsi']) {
+  try { await access(path.join(root, file)); }
+  catch { throw new Error(`Required packaging input is missing: ${file}. Build the desktop and include its packaging sources.`); }
+}
 
 function run(command, args, extraEnv = {}) {
   return new Promise((resolve, reject) => {
