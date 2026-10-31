@@ -1,4 +1,9 @@
 {
+  "repository": {
+    "html_url": "https://github.com/josepramod39-sketch/JaxOS",
+    "private": false,
+    "visibility": "public"
+  },
   "windows": {
     "id": 41175105433,
     "html_url": "https://github.com/josepramod39-sketch/JaxOS/actions/runs/41175105433",
