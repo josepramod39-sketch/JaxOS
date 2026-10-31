@@ -7,10 +7,10 @@
     "conclusion": null
   },
   "publication": {
-    "id": 41175010091,
-    "html_url": "https://github.com/josepramod39-sketch/JaxOS/actions/runs/41175010091",
-    "head_sha": "81e4bcbab47d7b8403f99d73051ecdd231d95436",
+    "id": 41175256076,
+    "html_url": "https://github.com/josepramod39-sketch/JaxOS/actions/runs/41175256076",
+    "head_sha": "7cdac1cc9d9187ad28fe5c5c673be6775ef761e0",
     "status": "completed",
-    "conclusion": "failure"
+    "conclusion": "success"
   }
 }
