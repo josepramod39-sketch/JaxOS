@@ -2,7 +2,50 @@
   "tag": "desktop-v0.5.1-alpha.1",
   "sourceCommit": "8d44727d2342f97dd1ab3a79df59c5bdeef0d20f",
   "build": "success",
-  "publication": "failure",
-  "runUrl": "https://github.com/josepramod39-sketch/JaxOS/actions/runs/41174578741",
-  "nativeWindowsValidated": false
+  "publication": "success",
+  "runUrl": "https://github.com/josepramod39-sketch/JaxOS/actions/runs/41175256076",
+  "nativeWindowsValidated": false,
+  "releaseUrl": "https://github.com/josepramod39-sketch/JaxOS/releases/tag/desktop-v0.5.1-alpha.1",
+  "assets": [
+    {
+      "name": "JaxOS-Desktop-0.5.1-source.zip",
+      "bytes": 156,
+      "url": "https://github.com/josepramod39-sketch/JaxOS/releases/download/desktop-v0.5.1-alpha.1/JaxOS-Desktop-0.5.1-source.zip"
+    },
+    {
+      "name": "JaxOS-Setup-0.5.1-win-x64.exe",
+      "bytes": 113296488,
+      "url": "https://github.com/josepramod39-sketch/JaxOS/releases/download/desktop-v0.5.1-alpha.1/JaxOS-Setup-0.5.1-win-x64.exe"
+    },
+    {
+      "name": "LICENSE",
+      "bytes": 11358,
+      "url": "https://github.com/josepramod39-sketch/JaxOS/releases/download/desktop-v0.5.1-alpha.1/LICENSE"
+    },
+    {
+      "name": "NOTICE",
+      "bytes": 296,
+      "url": "https://github.com/josepramod39-sketch/JaxOS/releases/download/desktop-v0.5.1-alpha.1/NOTICE"
+    },
+    {
+      "name": "package-verification-0.5.1.json",
+      "bytes": 6983,
+      "url": "https://github.com/josepramod39-sketch/JaxOS/releases/download/desktop-v0.5.1-alpha.1/package-verification-0.5.1.json"
+    },
+    {
+      "name": "SHA256SUMS-0.5.1",
+      "bytes": 193,
+      "url": "https://github.com/josepramod39-sketch/JaxOS/releases/download/desktop-v0.5.1-alpha.1/SHA256SUMS-0.5.1"
+    },
+    {
+      "name": "THIRD-PARTY-NOTICES.md",
+      "bytes": 22662,
+      "url": "https://github.com/josepramod39-sketch/JaxOS/releases/download/desktop-v0.5.1-alpha.1/THIRD-PARTY-NOTICES.md"
+    },
+    {
+      "name": "windows-build-receipt-0.5.1.json",
+      "bytes": 826,
+      "url": "https://github.com/josepramod39-sketch/JaxOS/releases/download/desktop-v0.5.1-alpha.1/windows-build-receipt-0.5.1.json"
+    }
+  ]
 }
