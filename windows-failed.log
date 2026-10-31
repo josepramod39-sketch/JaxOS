@@ -1,0 +1,254 @@
+windows-alpha	UNKNOWN STEP	﻿2026-10-29T05:02:03.1836069Z Current runner version: '2.338.0'
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:03.1871555Z ##[group]Runner Image Provisioner
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:03.1872551Z Hosted Compute Agent
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:03.1873110Z Version: 20261021.618
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:03.1873701Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:03.1874368Z Build Date: 2026-10-21T00:45:21Z
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:03.1874989Z Worker ID: {d011debe-c2d2-4403-915d-6f757a80bca6}
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:03.1875652Z Region: eastus2
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:03.1876158Z Cloud: Azure
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:03.1876662Z ##[endgroup]
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:03.1878132Z ##[group]Operating System
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:03.1878746Z Microsoft Windows Server 2022
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:03.1879336Z 10.0.20348
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:03.1879794Z Datacenter
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:03.1880249Z ##[endgroup]
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:03.1880734Z ##[group]Runner Image
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:03.1881259Z Image: windows-2022
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:03.1881764Z Version: 20261025.346.1
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:03.1883164Z Included Software: https://github.com/actions/runner-images/blob/win22/20261025.346/images/windows/Windows2022-Readme.md
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:03.1884600Z Image Release: https://github.com/actions/runner-images/releases/tag/win22%2F20261025.346
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:03.1885513Z ##[endgroup]
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:03.1886503Z ##[group]GITHUB_TOKEN Permissions
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:03.1888295Z Contents: read
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:03.1888943Z Metadata: read
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:03.1889470Z ##[endgroup]
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:03.1891509Z Secret source: Actions
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:03.1892338Z Cache mode: write
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:03.1892988Z Prepare workflow directory
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:03.2341329Z Prepare all required actions
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:03.2388512Z Getting action download info
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:03.4028999Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:03.5204557Z Download action repository 'actions/setup-node@v4' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:03.6627363Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:04.0049530Z Complete job name: windows-alpha
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:04.1705126Z ##[group]Run actions/checkout@v4
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:04.1706156Z with:
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:04.1706573Z   repository: josepramod39-sketch/JaxOS
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:04.1710348Z   token: ***
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:04.1710740Z   ssh-strict: true
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:04.1711133Z   ssh-user: git
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:04.1711535Z   persist-credentials: true
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:04.1711989Z   clean: true
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:04.1712379Z   sparse-checkout-cone-mode: true
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:04.1712839Z   fetch-depth: 1
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:04.1713216Z   fetch-tags: false
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:04.1713608Z   show-progress: true
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:04.1714003Z   lfs: false
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:04.1714364Z   submodules: false
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:04.1714761Z   set-safe-directory: true
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:04.1715201Z   allow-unsafe-pr-checkout: false
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:04.1715880Z ##[endgroup]
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:04.3273739Z Syncing repository: josepramod39-sketch/JaxOS
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:04.3275465Z ##[group]Getting Git version info
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:04.3276104Z Working directory is 'D:\a\JaxOS\JaxOS'
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:04.4394268Z [command]"C:\Program Files\Git\bin\git.exe" version
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:04.8134124Z git version 2.56.0.windows.3
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:04.8172287Z ##[endgroup]
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:04.8189848Z Temporarily overriding HOME='D:\a\_temp\af497403-fdd7-4e09-8cd7-8c413843a212' before making global git config changes
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:04.8191696Z Adding repository directory to the temporary git global config as a safe directory
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:04.8201803Z [command]"C:\Program Files\Git\bin\git.exe" config --global --add safe.directory D:\a\JaxOS\JaxOS
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:04.8859642Z Deleting the contents of 'D:\a\JaxOS\JaxOS'
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:04.8864633Z ##[group]Initializing the repository
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:04.8873531Z [command]"C:\Program Files\Git\bin\git.exe" init D:\a\JaxOS\JaxOS
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:04.9693827Z Initialized empty Git repository in D:/a/JaxOS/JaxOS/.git/
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:04.9732555Z [command]"C:\Program Files\Git\bin\git.exe" remote add origin https://github.com/josepramod39-sketch/JaxOS
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:05.0341247Z ##[endgroup]
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:05.0342702Z ##[group]Disabling automatic garbage collection
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:05.0349103Z [command]"C:\Program Files\Git\bin\git.exe" config --local gc.auto 0
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:05.0632512Z ##[endgroup]
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:05.0634078Z ##[group]Setting up auth
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:05.0644541Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:05.0941170Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:06.5640380Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:06.5930145Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:07.0500371Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp ^includeIf\.gitdir:
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:07.0787415Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "git config --local --show-origin --name-only --get-regexp remote.origin.url"
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:07.5354095Z [command]"C:\Program Files\Git\bin\git.exe" config --local http.https://github.com/.extraheader "AUTHORIZATION: basic ***"
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:07.5667903Z ##[endgroup]
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:07.5668842Z ##[group]Fetching the repository
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:07.5681615Z [command]"C:\Program Files\Git\bin\git.exe" -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +b2b0ee7391d4f789c919213ac8391dc58b8d9522:refs/remotes/origin/codex/desktop-public-alpha
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:08.7913033Z From https://github.com/josepramod39-sketch/JaxOS
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:08.7938430Z  * [new ref]         b2b0ee7391d4f789c919213ac8391dc58b8d9522 -> origin/codex/desktop-public-alpha
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:08.7940049Z ##[endgroup]
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:08.7941155Z ##[group]Determining the checkout info
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:08.7943138Z ##[endgroup]
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:08.7951983Z [command]"C:\Program Files\Git\bin\git.exe" sparse-checkout disable
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:08.8377130Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset-all extensions.worktreeConfig
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:08.8660963Z ##[group]Checking out the ref
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:08.8670669Z [command]"C:\Program Files\Git\bin\git.exe" checkout --progress --force -B codex/desktop-public-alpha refs/remotes/origin/codex/desktop-public-alpha
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:09.2607509Z Switched to a new branch 'codex/desktop-public-alpha'
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:09.2674858Z branch 'codex/desktop-public-alpha' set up to track 'origin/codex/desktop-public-alpha'.
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:09.2730032Z ##[endgroup]
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:09.3185293Z [command]"C:\Program Files\Git\bin\git.exe" log -1 --format=%H
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:09.3453513Z b2b0ee7391d4f789c919213ac8391dc58b8d9522
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:09.3889898Z ##[group]Run actions/setup-node@v4
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:09.3890255Z with:
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:09.3890441Z   node-version: 24
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:09.3890642Z   cache: npm
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:09.3890897Z   cache-dependency-path: apps/desktop/package-lock.json
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:09.3891217Z   always-auth: false
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:09.3891429Z   check-latest: false
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:09.3893810Z   token: ***
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:09.3894004Z ##[endgroup]
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:09.5710866Z Found in cache @ C:\hostedtoolcache\windows\node\24.22.1\x64
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:09.5717941Z (node:5248) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:09.5719942Z (Use `node --trace-deprecation ...` to show where the warning was created)
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:09.5721591Z ##[group]Environment details
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:14.7236416Z node: v24.22.1
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:14.7236672Z npm: 11.19.1
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:14.7236846Z yarn: 1.22.22
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:14.7237771Z ##[endgroup]
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:14.8111089Z [command]C:\Windows\system32\cmd.exe /D /S /C "C:\hostedtoolcache\windows\node\24.22.1\x64\npm.cmd config get cache"
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:15.2991748Z C:\npm\cache
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:15.5719978Z npm cache is not found
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:15.5982656Z ##[group]Run npm ci 2>&1 | Tee-Object -FilePath (Join-Path $env:RUNNER_TEMP 'jaxos-install.log')
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:15.5983427Z ^[[36;1mnpm ci 2>&1 | Tee-Object -FilePath (Join-Path $env:RUNNER_TEMP 'jaxos-install.log')^[[0m
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:15.5983925Z ^[[36;1mif ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }^[[0m
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:15.6145075Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:15.6145528Z ##[endgroup]
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:20.0741720Z ^[[31;1mnpm warn deprecated rimraf@2.6.3: Rimraf versions prior to v4 are no longer supported^[[0m
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:20.3582248Z ^[[31;1mnpm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.^[[0m
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:20.5811340Z ^[[31;1mnpm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me^[[0m
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:21.3438510Z ^[[31;1mnpm warn deprecated boolean@3.2.0: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.^[[0m
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:31.0184621Z 
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:31.0186533Z added 330 packages, and audited 331 packages in 15s
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:31.0189174Z 
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:31.0192071Z 58 packages are looking for funding
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:31.0195086Z   run `npm fund` for details
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:31.0403768Z 
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:31.0407902Z 3 vulnerabilities (1 moderate, 2 high)
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:31.0412597Z 
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:31.0414765Z To address issues that do not require attention, run:
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:31.0423103Z   npm audit fix
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:31.0424998Z 
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:31.0425419Z To address all issues, run:
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:31.0426042Z   npm audit fix --force
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:31.0426446Z 
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:31.0426796Z Run `npm audit` for details.
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:31.0440052Z ^[[31;1mnpm warn install-scripts 2 packages have install scripts not yet covered by allowScripts:^[[0m
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:31.0450376Z ^[[31;1mnpm warn install-scripts   electron-winstaller@5.4.0 (install: node ./script/select-7z-arch.js)^[[0m
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:31.0458692Z ^[[31;1mnpm warn install-scripts   esbuild@0.28.2 (postinstall: node install.js)^[[0m
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:31.0478877Z ^[[31;1mnpm warn install-scripts^[[0m
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:31.0487671Z ^[[31;1mnpm warn install-scripts Run `npm install-scripts ls` to review, or `npm install-scripts approve <pkg>` to allow.^[[0m
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:32.6148522Z ##[group]Run npm run typecheck 2>&1 | Tee-Object -FilePath (Join-Path $env:RUNNER_TEMP 'jaxos-typecheck.log')
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:32.6149360Z ^[[36;1mnpm run typecheck 2>&1 | Tee-Object -FilePath (Join-Path $env:RUNNER_TEMP 'jaxos-typecheck.log')^[[0m
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:32.6149921Z ^[[36;1mif ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }^[[0m
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:32.6188112Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:32.6188457Z ##[endgroup]
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:33.2773676Z 
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:33.2776784Z > jaxos-desktop@0.5.1 typecheck
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:33.2779054Z > tsc --noEmit
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:33.2781092Z 
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:34.0855510Z ##[group]Run npm run build 2>&1 | Tee-Object -FilePath (Join-Path $env:RUNNER_TEMP 'jaxos-build.log')
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:34.0856454Z ^[[36;1mnpm run build 2>&1 | Tee-Object -FilePath (Join-Path $env:RUNNER_TEMP 'jaxos-build.log')^[[0m
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:34.0856982Z ^[[36;1mif ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }^[[0m
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:34.0896186Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:34.0896533Z ##[endgroup]
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:34.7337304Z 
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:34.7340459Z > jaxos-desktop@0.5.1 build
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:34.7342149Z > vite build && node scripts/build-electron.mjs
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:34.7343548Z 
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:35.0248847Z ^[[36mvite v8.3.4 ^[[32mbuilding client environment for production...^[[36m^[[39m
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:35.0383323Z transforming...
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:35.2619686Z ✓ 1917 modules transformed.
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:35.3176751Z rendering chunks...
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:35.3641982Z computing gzip size...
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:35.3692149Z dist/index.html                   0.74 kB │ gzip:  0.42 kB
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:35.3695838Z dist/assets/index-BGBF8eV3.css   37.54 kB │ gzip:  8.22 kB
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:35.3698541Z dist/assets/index-CzLkBis8.js   296.55 kB │ gzip: 90.14 kB
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:35.3700311Z 
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:35.3710968Z ^[[32m✓ built in 345ms^[[39m
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:35.8699452Z ##[group]Run npm run package:win 2>&1 | Tee-Object -FilePath (Join-Path $env:RUNNER_TEMP 'jaxos-package.log')
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:35.8700301Z ^[[36;1mnpm run package:win 2>&1 | Tee-Object -FilePath (Join-Path $env:RUNNER_TEMP 'jaxos-package.log')^[[0m
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:35.8700854Z ^[[36;1mif ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }^[[0m
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:35.8741664Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:35.8742006Z ##[endgroup]
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:36.5410340Z 
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:36.5413147Z > jaxos-desktop@0.5.1 package:win
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:36.5415867Z > node scripts/package-windows.mjs
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:36.5418155Z 
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:37.2766022Z   • electron-builder  version=26.15.3 os=10.0.20348
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:37.2839222Z   • loaded configuration  file=package.json ("build" field)
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:38.1467752Z   • executing @electron/rebuild  electronVersion=44.7.0 arch=x64 buildFromSource=false workspaceRoot=D:\a\JaxOS\JaxOS\apps\desktop projectDir=./ appDir=./
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:38.1469627Z   • installing native dependencies  arch=x64
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:38.3369448Z   • completed installing native dependencies
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:38.3418050Z   • packaging       platform=win32 arch=x64 electron=44.7.0 appOutDir=release\win-unpacked
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:38.4838465Z   • downloaded      label=electron progress=100%
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:43.5241670Z   • downloaded electron zip extracted successfully  output=D:\a\JaxOS\JaxOS\apps\desktop\release\win-unpacked
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:43.5476166Z   • searching for node modules  pm=npm searchDir=D:\a\JaxOS\JaxOS\apps\desktop
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:59.7198003Z   • updating asar integrity executable resource  executablePath=release\win-unpacked\JaxOS.exe
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:59.7307174Z   • executable resource editing and code signing skipped — signAndEditExecutable is false. To skip only code signing while keeping icon and metadata applied, use signExecutable: false instead.  exe=release\win-unpacked\JaxOS.exe
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:59.8611486Z ^[[31;1mnode:internal/fs/promises:1327^[[0m
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:59.8618875Z ^[[31;1m  return await PromisePrototypeThen(^[[0m
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:59.8644226Z ^[[31;1m         ^^[[0m
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:59.8651516Z ^[[31;1m^[[0m
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:59.8659233Z ^[[31;1mError: ENOENT: no such file or directory, copyfile 'D:\a\JaxOS\JaxOS\apps\desktop\build\evaluate.cmd' -> 'D:\a\JaxOS\JaxOS\apps\desktop\release\win-unpacked\evaluate.cmd'^[[0m
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:59.8665679Z ^[[31;1m    at async copyFile (node:internal/fs/promises:1327:10)^[[0m
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:59.8672114Z ^[[31;1m    at async file:///D:/a/JaxOS/JaxOS/apps/desktop/scripts/package-windows.mjs:51:1 {^[[0m
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:59.8678864Z ^[[31;1m  errno: -4058,^[[0m
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:59.8685042Z ^[[31;1m  code: 'ENOENT',^[[0m
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:59.8691515Z ^[[31;1m  syscall: 'copyfile',^[[0m
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:59.8697930Z ^[[31;1m  path: 'D:\\a\\JaxOS\\JaxOS\\apps\\desktop\\build\\evaluate.cmd',^[[0m
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:59.8704298Z ^[[31;1m  dest: 'D:\\a\\JaxOS\\JaxOS\\apps\\desktop\\release\\win-unpacked\\evaluate.cmd'^[[0m
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:59.8710149Z ^[[31;1m}^[[0m
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:59.8716424Z ^[[31;1m^[[0m
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:59.8723852Z ^[[31;1mNode.js v24.22.1^[[0m
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:59.8925561Z ##[error]Process completed with exit code 1.
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:59.9133956Z ##[group]Run actions/upload-artifact@v4
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:59.9134317Z with:
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:59.9134533Z   name: jaxos-windows-alpha-validation
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:59.9135559Z   path: apps/desktop/release/JaxOS-Setup-0.5.1-win-x64.exe
+windows-alpha	UNKNOWN STEP	apps/desktop/release/*receipt*.json
+windows-alpha	UNKNOWN STEP	apps/desktop/release/*verification*.json
+windows-alpha	UNKNOWN STEP	apps/desktop/release/windows-native-partial.json
+windows-alpha	UNKNOWN STEP	apps/desktop/release/SHA256SUMS
+windows-alpha	UNKNOWN STEP	D:\a\_temp/jaxos-*.log
+windows-alpha	UNKNOWN STEP	
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:59.9136558Z   if-no-files-found: warn
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:59.9136800Z   compression-level: 6
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:59.9136997Z   overwrite: false
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:59.9137192Z   include-hidden-files: false
+windows-alpha	UNKNOWN STEP	2026-10-29T05:02:59.9137423Z ##[endgroup]
+windows-alpha	UNKNOWN STEP	2026-10-29T05:03:00.1060688Z (node:1792) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+windows-alpha	UNKNOWN STEP	2026-10-29T05:03:00.1061594Z (Use `node --trace-deprecation ...` to show where the warning was created)
+windows-alpha	UNKNOWN STEP	2026-10-29T05:03:00.1176361Z Multiple search paths detected. Calculating the least common ancestor of all paths
+windows-alpha	UNKNOWN STEP	2026-10-29T05:03:00.1179482Z The least common ancestor is D:\a. This will be the root directory of the artifact
+windows-alpha	UNKNOWN STEP	2026-10-29T05:03:00.1180266Z With the provided path, there will be 4 files uploaded
+windows-alpha	UNKNOWN STEP	2026-10-29T05:03:00.1185902Z Artifact name is valid!
+windows-alpha	UNKNOWN STEP	2026-10-29T05:03:00.1188205Z Root directory input is valid!
+windows-alpha	UNKNOWN STEP	2026-10-29T05:03:00.3624612Z Beginning upload of artifact content to blob storage
+windows-alpha	UNKNOWN STEP	2026-10-29T05:03:00.3901358Z (node:1792) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+windows-alpha	UNKNOWN STEP	2026-10-29T05:03:00.4317141Z Uploaded bytes 2406
+windows-alpha	UNKNOWN STEP	2026-10-29T05:03:00.4508240Z Finished uploading artifact content to blob storage!
+windows-alpha	UNKNOWN STEP	2026-10-29T05:03:00.4509490Z SHA256 digest of uploaded artifact zip is db3fb98839b97182c3e2172181e753dec00d678b79f63c2c7405a19d3f1c3937
+windows-alpha	UNKNOWN STEP	2026-10-29T05:03:00.4512403Z Finalizing artifact upload
+windows-alpha	UNKNOWN STEP	2026-10-29T05:03:00.9403026Z Artifact jaxos-windows-alpha-validation.zip successfully finalized. Artifact ID 12874418367
+windows-alpha	UNKNOWN STEP	2026-10-29T05:03:00.9404388Z Artifact jaxos-windows-alpha-validation has been successfully uploaded! Final size is 2406 bytes. Artifact ID is 12874418367
+windows-alpha	UNKNOWN STEP	2026-10-29T05:03:00.9413489Z Artifact download URL: https://github.com/josepramod39-sketch/JaxOS/actions/runs/40821034608/artifacts/12874418367
+windows-alpha	UNKNOWN STEP	2026-10-29T05:03:00.9718455Z Post job cleanup.
+windows-alpha	UNKNOWN STEP	2026-10-29T05:03:01.1635106Z [command]"C:\Program Files\Git\bin\git.exe" version
+windows-alpha	UNKNOWN STEP	2026-10-29T05:03:01.1917137Z git version 2.56.0.windows.3
+windows-alpha	UNKNOWN STEP	2026-10-29T05:03:01.1984259Z Temporarily overriding HOME='D:\a\_temp\79e4e065-01c0-42d7-a21e-7b5188eb81d5' before making global git config changes
+windows-alpha	UNKNOWN STEP	2026-10-29T05:03:01.1985741Z Adding repository directory to the temporary git global config as a safe directory
+windows-alpha	UNKNOWN STEP	2026-10-29T05:03:01.1997370Z [command]"C:\Program Files\Git\bin\git.exe" config --global --add safe.directory D:\a\JaxOS\JaxOS
+windows-alpha	UNKNOWN STEP	2026-10-29T05:03:01.2327066Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+windows-alpha	UNKNOWN STEP	2026-10-29T05:03:01.2643877Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+windows-alpha	UNKNOWN STEP	2026-10-29T05:03:01.7331688Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+windows-alpha	UNKNOWN STEP	2026-10-29T05:03:01.7590241Z http.https://github.com/.extraheader
+windows-alpha	UNKNOWN STEP	2026-10-29T05:03:01.7626448Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset-all http.https://github.com/.extraheader
+windows-alpha	UNKNOWN STEP	2026-10-29T05:03:01.7924386Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+windows-alpha	UNKNOWN STEP	2026-10-29T05:03:02.2792527Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp ^includeIf\.gitdir:
+windows-alpha	UNKNOWN STEP	2026-10-29T05:03:02.3079807Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "git config --local --show-origin --name-only --get-regexp remote.origin.url"
+windows-alpha	UNKNOWN STEP	2026-10-29T05:03:02.8128711Z Cleaning up orphan processes
+windows-alpha	UNKNOWN STEP	2026-10-29T05:03:02.8191861Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-node@v4, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
