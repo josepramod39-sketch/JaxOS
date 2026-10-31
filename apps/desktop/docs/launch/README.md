@@ -1,5 +1,7 @@
 # JaxOS public alpha launch kit
 
+**Published:** [Desktop 0.5.1 alpha 1](https://github.com/josepramod39-sketch/JaxOS/releases/tag/desktop-v0.5.1-alpha.1), with verified installer, complete source and checksums. Windows CI packaging, fresh installation and installed CLI now pass. Broader GUI/model/GPU/manual acceptance remains pending. See [publication evidence](PUBLIC-RELEASE.json).
+
 Positioning: **A Windows workspace for local AI and KiCad checks.** First audience: Windows electronics hobbyists, KiCad users and local-model enthusiasts. First milestone: ten testers who complete one real check, then learn who returns in seven days. Do not advertise the future software-builder or Android roadmap as shipped functionality.
 
 ## Current state

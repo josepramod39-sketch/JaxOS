@@ -1,9 +1,9 @@
 {
   "version": "0.5.1",
-  "state": "prepared-not-published",
+  "state": "published-experimental-alpha",
   "sourceLicense": "Apache-2.0",
-  "githubAccess": "Git read/write verified; review branch pushed. Plugin API tools not exposed; separate CLI API credential unavailable.",
-  "nativeWindowsAcceptance": "not-run",
+  "githubAccess": "Git and GitHub Actions publication succeeded; repository visibility verified public.",
+  "nativeWindowsAcceptance": "partial CI only; full GUI/model/GPU/manual acceptance outstanding",
   "demoVideo": "storyboard prepared; Windows capture pending",
   "publicUrlMarkers": {
     "docs/launch/README.md": [],
@@ -31,5 +31,8 @@
     "failed": 0
   },
   "installerSha256": "5d2a1ff6d6bb19f27a45731e6c6877846054a7e07fed2b46d123741261936cc4",
-  "integrationBranch": "codex/desktop-public-alpha"
+  "integrationBranch": "codex/desktop-public-alpha",
+  "publicReleaseUrl": "https://github.com/josepramod39-sketch/JaxOS/releases/tag/desktop-v0.5.1-alpha.1",
+  "sourceArchiveVerified": true,
+  "windowsCi": "success: packaging, archive verification, fresh installation and installed CLI"
 }

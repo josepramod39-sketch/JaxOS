@@ -1,0 +1,58 @@
+{
+  "publication": "success",
+  "sourceArchiveVerified": true,
+  "releaseUrl": "https://github.com/josepramod39-sketch/JaxOS/releases/tag/desktop-v0.5.1-alpha.1",
+  "sourceCommit": "c48d52dac140e9cd1070b67d7f8b2dafc2304118",
+  "nativeWindowsValidated": false,
+  "assets": [
+    {
+      "name": "JaxOS-Desktop-0.5.1-source.zip",
+      "bytes": 32547640,
+      "url": "https://github.com/josepramod39-sketch/JaxOS/releases/download/desktop-v0.5.1-alpha.1/JaxOS-Desktop-0.5.1-source.zip"
+    },
+    {
+      "name": "JaxOS-Setup-0.5.1-win-x64.exe",
+      "bytes": 113296488,
+      "url": "https://github.com/josepramod39-sketch/JaxOS/releases/download/desktop-v0.5.1-alpha.1/JaxOS-Setup-0.5.1-win-x64.exe"
+    },
+    {
+      "name": "LICENSE",
+      "bytes": 11358,
+      "url": "https://github.com/josepramod39-sketch/JaxOS/releases/download/desktop-v0.5.1-alpha.1/LICENSE"
+    },
+    {
+      "name": "NOTICE",
+      "bytes": 296,
+      "url": "https://github.com/josepramod39-sketch/JaxOS/releases/download/desktop-v0.5.1-alpha.1/NOTICE"
+    },
+    {
+      "name": "package-verification-0.5.1.json",
+      "bytes": 6983,
+      "url": "https://github.com/josepramod39-sketch/JaxOS/releases/download/desktop-v0.5.1-alpha.1/package-verification-0.5.1.json"
+    },
+    {
+      "name": "SHA256SUMS-0.5.1",
+      "bytes": 193,
+      "url": "https://github.com/josepramod39-sketch/JaxOS/releases/download/desktop-v0.5.1-alpha.1/SHA256SUMS-0.5.1"
+    },
+    {
+      "name": "THIRD-PARTY-NOTICES.md",
+      "bytes": 22662,
+      "url": "https://github.com/josepramod39-sketch/JaxOS/releases/download/desktop-v0.5.1-alpha.1/THIRD-PARTY-NOTICES.md"
+    },
+    {
+      "name": "windows-build-receipt-0.5.1.json",
+      "bytes": 826,
+      "url": "https://github.com/josepramod39-sketch/JaxOS/releases/download/desktop-v0.5.1-alpha.1/windows-build-receipt-0.5.1.json"
+    }
+  ],
+  "repositoryVisibility": "public",
+  "windowsCi": {
+    "id": 41175105433,
+    "html_url": "https://github.com/josepramod39-sketch/JaxOS/actions/runs/41175105433",
+    "head_sha": "4dd8cad29355178aa95d8b4435ceeca2c9222cd6",
+    "status": "completed",
+    "conclusion": "success"
+  },
+  "acceptanceLimit": "Windows CI tested a native Windows build, fresh installation and installed CLI. Full GUI/model/GPU acceptance and native execution of the exact Linux-built public installer remain unverified."
+}
