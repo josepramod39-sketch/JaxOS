@@ -35,17 +35,23 @@ jobs:
         GH_TOKEN: ${{ github.token }}
       shell: bash
       run: "set -euo pipefail\nassets=\"$(find publication -name SHA256SUMS-0.5.1 -printf '%h\\n' -quit)\"\ntest -n \"$assets\"\
-        \ncd \"$assets\"\nsha256sum --check SHA256SUMS-0.5.1\ngh release create \"$ALPHA_TAG\" --repo \"$GITHUB_REPOSITORY\"\
+        \ncd \"$assets\"\nsha256sum --check SHA256SUMS-0.5.1\ngh api \"repos/$GITHUB_REPOSITORY/releases?per_page=100\" --jq\
+        \ '[.[] | select(.tag_name==\"desktop-v0.5.1-alpha.1\")][0] // {}' > \"$GITHUB_WORKSPACE/release-result.json\"\nif\
+        \ ! python3 -c 'import json,os; from pathlib import Path; r=json.loads(Path(os.environ[\"GITHUB_WORKSPACE\"],\"release-result.json\"\
+        ).read_text()); raise SystemExit(0 if r.get(\"id\") else 1)'; then\n  gh release create \"$ALPHA_TAG\" --repo \"$GITHUB_REPOSITORY\"\
         \ --verify-tag --draft --prerelease --title 'JaxOS Desktop 0.5.1 \u2014 Windows alpha 1 (unsigned)' --notes-file RELEASE-NOTES.md\
         \ JaxOS-Setup-0.5.1-win-x64.exe JaxOS-Desktop-0.5.1-source.zip SHA256SUMS-0.5.1 windows-build-receipt-0.5.1.json package-verification-0.5.1.json\
-        \ LICENSE NOTICE THIRD-PARTY-NOTICES.md\ngh api \"repos/$GITHUB_REPOSITORY/releases/tags/$ALPHA_TAG\" > \"$GITHUB_WORKSPACE/release-result.json\"\
-        \npython3 - <<'PY'\nimport json,os\nfrom pathlib import Path\nr=json.loads(Path(os.environ['GITHUB_WORKSPACE'],'release-result.json').read_text())\n\
+        \ LICENSE NOTICE THIRD-PARTY-NOTICES.md\nfi\ngh api \"repos/$GITHUB_REPOSITORY/releases?per_page=100\" --jq '[.[]\
+        \ | select(.tag_name==\"desktop-v0.5.1-alpha.1\")][0] // {}' > \"$GITHUB_WORKSPACE/release-result.json\"\npython3\
+        \ - <<'PY'\nimport json,os\nfrom pathlib import Path\nr=json.loads(Path(os.environ['GITHUB_WORKSPACE'],'release-result.json').read_text())\n\
         required={'JaxOS-Setup-0.5.1-win-x64.exe','JaxOS-Desktop-0.5.1-source.zip','SHA256SUMS-0.5.1','windows-build-receipt-0.5.1.json','package-verification-0.5.1.json','LICENSE','NOTICE','THIRD-PARTY-NOTICES.md'}\n\
-        assert r['prerelease'] and r['draft']\nassert required <= {a['name'] for a in r['assets']}\nassert all(a['state']=='uploaded'\
-        \ and a['size']>0 for a in r['assets'] if a['name'] in required)\nprint(r['html_url'])\nPY\ngh release edit \"$ALPHA_TAG\"\
-        \ --repo \"$GITHUB_REPOSITORY\" --draft=false --prerelease\ngh api \"repos/$GITHUB_REPOSITORY/releases/tags/$ALPHA_TAG\"\
-        \ > \"$GITHUB_WORKSPACE/release-result.json\"\npython3 -c 'import json,os; from pathlib import Path; r=json.loads(Path(os.environ[\"\
-        GITHUB_WORKSPACE\"],\"release-result.json\").read_text()); assert r[\"prerelease\"] and not r[\"draft\"]'\n"
+        assert r['prerelease']\nassert required <= {a['name'] for a in r['assets']}\nassert all(a['state']=='uploaded' and\
+        \ a['size']==Path(a['name']).stat().st_size for a in r['assets'] if a['name'] in required)\nimport hashlib\nfor a\
+        \ in r['assets']:\n  if a['name'] in required and a.get('digest'):\n    assert a['digest']=='sha256:'+hashlib.sha256(Path(a['name']).read_bytes()).hexdigest()\n\
+        print(r['html_url'])\nPY\ngh release edit \"$ALPHA_TAG\" --repo \"$GITHUB_REPOSITORY\" --draft=false --prerelease\n\
+        gh api \"repos/$GITHUB_REPOSITORY/releases/tags/$ALPHA_TAG\" > \"$GITHUB_WORKSPACE/release-result.json\"\npython3\
+        \ -c 'import json,os; from pathlib import Path; r=json.loads(Path(os.environ[\"GITHUB_WORKSPACE\"],\"release-result.json\"\
+        ).read_text()); assert r[\"prerelease\"] and not r[\"draft\"]'\n"
     - name: Record publication outcome in repository
       if: always()
       env:
@@ -56,7 +62,7 @@ jobs:
       shell: bash
       run: "set -euo pipefail\npython3 - <<'PY'\nimport json,os\nfrom pathlib import Path\nreport={'tag':os.environ['ALPHA_TAG'],'sourceCommit':os.environ['SOURCE_SHA'],'build':os.environ['BUILD_RESULT'],'publication':os.environ['RELEASE_RESULT'],'runUrl':f\"\
         https://github.com/{os.environ['GITHUB_REPOSITORY']}/actions/runs/{os.environ['GITHUB_RUN_ID']}\",'nativeWindowsValidated':False}\n\
-        result=Path('release-result.json')\nif result.exists():\n  r=json.loads(result.read_text());report['releaseUrl']=r['html_url'];report['assets']=[{'name':a['name'],'bytes':a['size'],'url':a['browser_download_url']}\
+        result=Path('release-result.json')\nif result.exists() and json.loads(result.read_text()).get('html_url'):\n  r=json.loads(result.read_text());report['releaseUrl']=r['html_url'];report['assets']=[{'name':a['name'],'bytes':a['size'],'url':a['browser_download_url']}\
         \ for a in r['assets']]\nPath(os.environ['RUNNER_TEMP'],'publication-status.json').write_text(json.dumps(report,indent=2)+'\\\
         n')\nPY\ngh auth setup-git --hostname github.com\nstatusRepo=\"$RUNNER_TEMP/publication-status-repo\"\ngit init -b\
         \ codex/desktop-alpha-publication-status \"$statusRepo\"\ncd \"$statusRepo\"\ngit remote add origin \"https://github.com/$GITHUB_REPOSITORY.git\"\
