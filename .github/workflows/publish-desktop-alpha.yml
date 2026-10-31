@@ -1,11 +1,6 @@
 name: Publish JaxOS desktop alpha
-# Packaging inputs are tracked explicitly; verify all assets before publishing.
-"on":
-  push:
-    branches: [codex/publish-desktop-alpha]
-    paths:
-      - .github/workflows/publish-desktop-alpha.yml
-  workflow_dispatch:
+'on':
+  workflow_dispatch: null
 concurrency:
   group: publish-desktop-v0.5.1-alpha.1
   cancel-in-progress: false
@@ -22,54 +17,84 @@ jobs:
         shell: bash
         working-directory: apps/desktop
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '24'
-          cache: npm
-          cache-dependency-path: apps/desktop/package-lock.json
-      - name: Install, check and build locked desktop source
-        run: |
-          set -euo pipefail
-          mkdir -p .runtime/publication
-          npm ci 2>&1 | tee .runtime/publication/install.log
-          npm run typecheck 2>&1 | tee .runtime/publication/typecheck.log
-          npm run build 2>&1 | tee .runtime/publication/build.log
-      - name: Build unsigned Windows installer
-        run: |
-          set -euo pipefail
-          npm run package:win 2>&1 | tee .runtime/publication/package.log
-      - name: Verify installer and assemble release assets
-        run: |
-          set -euo pipefail
-          extract="$RUNNER_TEMP/jaxos-public-installer"
-          7z x release/JaxOS-Setup-0.5.1-win-x64.exe resources/app.asar JaxOS.exe evaluate.cmd "-o$extract" -y
-          node scripts/verify-windows-package.mjs --extracted "$extract" --output release/package-verification-0.5.1.json
-          git archive --format=zip --prefix=JaxOS-Desktop-0.5.1/ --output="$PWD/release/JaxOS-Desktop-0.5.1-source.zip" HEAD:apps/desktop
-          cp LICENSE release/LICENSE
-          cp NOTICE release/NOTICE
-          cp THIRD-PARTY-NOTICES.md release/THIRD-PARTY-NOTICES.md
-          cp docs/launch/PUBLISHED-ALPHA.md release/RELEASE-NOTES.md
-          cp release/windows-build-receipt.json release/windows-build-receipt-0.5.1.json
-          cd release
-          sha256sum JaxOS-Setup-0.5.1-win-x64.exe JaxOS-Desktop-0.5.1-source.zip > SHA256SUMS-0.5.1
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: jaxos-desktop-publication
-          path: |
-            apps/desktop/release/JaxOS-Setup-0.5.1-win-x64.exe
-            apps/desktop/release/JaxOS-Desktop-0.5.1-source.zip
-            apps/desktop/release/SHA256SUMS-0.5.1
-            apps/desktop/release/windows-build-receipt-0.5.1.json
-            apps/desktop/release/package-verification-0.5.1.json
-            apps/desktop/release/LICENSE
-            apps/desktop/release/NOTICE
-            apps/desktop/release/THIRD-PARTY-NOTICES.md
-            apps/desktop/release/RELEASE-NOTES.md
-            apps/desktop/.runtime/publication/*.log
-          if-no-files-found: error
-          include-hidden-files: true
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: '24'
+        cache: npm
+        cache-dependency-path: apps/desktop/package-lock.json
+    - name: Install, check and build locked desktop source
+      run: 'set -euo pipefail
+
+        mkdir -p .runtime/publication
+
+        npm ci 2>&1 | tee .runtime/publication/install.log
+
+        npm run typecheck 2>&1 | tee .runtime/publication/typecheck.log
+
+        npm run build 2>&1 | tee .runtime/publication/build.log
+
+        '
+    - name: Build unsigned Windows installer
+      run: 'set -euo pipefail
+
+        npm run package:win 2>&1 | tee .runtime/publication/package.log
+
+        '
+    - name: Verify installer and assemble release assets
+      run: 'set -euo pipefail
+
+        extract="$RUNNER_TEMP/jaxos-public-installer"
+
+        7z x release/JaxOS-Setup-0.5.1-win-x64.exe resources/app.asar JaxOS.exe evaluate.cmd "-o$extract" -y
+
+        node scripts/verify-windows-package.mjs --extracted "$extract" --output release/package-verification-0.5.1.json
+
+        git -C "$GITHUB_WORKSPACE" archive --format=zip --prefix=JaxOS-Desktop-0.5.1/ --output="$PWD/release/JaxOS-Desktop-0.5.1-source.zip"
+        HEAD:apps/desktop
+
+        cp LICENSE release/LICENSE
+
+        cp NOTICE release/NOTICE
+
+        cp THIRD-PARTY-NOTICES.md release/THIRD-PARTY-NOTICES.md
+
+        cp docs/launch/PUBLISHED-ALPHA.md release/RELEASE-NOTES.md
+
+        cp release/windows-build-receipt.json release/windows-build-receipt-0.5.1.json
+
+        cd release
+
+        sha256sum JaxOS-Setup-0.5.1-win-x64.exe JaxOS-Desktop-0.5.1-source.zip > SHA256SUMS-0.5.1
+
+        '
+    - uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: jaxos-desktop-publication
+        path: 'apps/desktop/release/JaxOS-Setup-0.5.1-win-x64.exe
+
+          apps/desktop/release/JaxOS-Desktop-0.5.1-source.zip
+
+          apps/desktop/release/SHA256SUMS-0.5.1
+
+          apps/desktop/release/windows-build-receipt-0.5.1.json
+
+          apps/desktop/release/package-verification-0.5.1.json
+
+          apps/desktop/release/LICENSE
+
+          apps/desktop/release/NOTICE
+
+          apps/desktop/release/THIRD-PARTY-NOTICES.md
+
+          apps/desktop/release/RELEASE-NOTES.md
+
+          apps/desktop/.runtime/publication/*.log
+
+          '
+        if-no-files-found: error
+        include-hidden-files: true
   publish:
     needs: build
     if: always()
@@ -79,68 +104,46 @@ jobs:
       contents: write
       actions: read
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/download-artifact@v4
-        id: download
-        continue-on-error: true
-        with:
-          name: jaxos-desktop-publication
-          path: publication
-      - name: Publish prerelease and verify uploaded assets
-        id: release
-        if: needs.build.result == 'success' && steps.download.outcome == 'success'
-        env:
-          GH_TOKEN: ${{ github.token }}
-        shell: bash
-        run: |
-          set -euo pipefail
-          assets="$(find publication -name SHA256SUMS-0.5.1 -printf '%h\n' -quit)"
-          test -n "$assets"
-          cd "$assets"
-          sha256sum --check SHA256SUMS-0.5.1
-          gh release create "$ALPHA_TAG" --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --draft --prerelease --latest=false --title 'JaxOS Desktop 0.5.1 — Windows alpha 1 (unsigned)' --notes-file RELEASE-NOTES.md JaxOS-Setup-0.5.1-win-x64.exe JaxOS-Desktop-0.5.1-source.zip SHA256SUMS-0.5.1 windows-build-receipt-0.5.1.json package-verification-0.5.1.json LICENSE NOTICE THIRD-PARTY-NOTICES.md
-          gh api "repos/$GITHUB_REPOSITORY/releases/tags/$ALPHA_TAG" > "$GITHUB_WORKSPACE/release-result.json"
-          python3 - <<'PY'
-          import json,os
-          from pathlib import Path
-          r=json.loads(Path(os.environ['GITHUB_WORKSPACE'],'release-result.json').read_text())
-          required={'JaxOS-Setup-0.5.1-win-x64.exe','JaxOS-Desktop-0.5.1-source.zip','SHA256SUMS-0.5.1','windows-build-receipt-0.5.1.json','package-verification-0.5.1.json','LICENSE','NOTICE','THIRD-PARTY-NOTICES.md'}
-          assert r['prerelease'] and r['draft']
-          assert required <= {a['name'] for a in r['assets']}
-          assert all(a['state']=='uploaded' and a['size']>0 for a in r['assets'] if a['name'] in required)
-          print(r['html_url'])
-          PY
-          gh release edit "$ALPHA_TAG" --repo "$GITHUB_REPOSITORY" --draft=false --prerelease --latest=false
-          gh api "repos/$GITHUB_REPOSITORY/releases/tags/$ALPHA_TAG" > "$GITHUB_WORKSPACE/release-result.json"
-          python3 -c 'import json,os; from pathlib import Path; r=json.loads(Path(os.environ["GITHUB_WORKSPACE"],"release-result.json").read_text()); assert r["prerelease"] and not r["draft"]'
-      - name: Record publication outcome in repository
-        if: always()
-        env:
-          GH_TOKEN: ${{ github.token }}
-          BUILD_RESULT: ${{ needs.build.result }}
-          RELEASE_RESULT: ${{ steps.release.outcome }}
-        shell: bash
-        run: |
-          set -euo pipefail
-          python3 - <<'PY'
-          import json,os
-          from pathlib import Path
-          report={'tag':os.environ['ALPHA_TAG'],'sourceCommit':os.environ['GITHUB_SHA'],'build':os.environ['BUILD_RESULT'],'publication':os.environ['RELEASE_RESULT'],'runUrl':f"https://github.com/{os.environ['GITHUB_REPOSITORY']}/actions/runs/{os.environ['GITHUB_RUN_ID']}",'nativeWindowsValidated':False}
-          result=Path('release-result.json')
-          if result.exists():
-            r=json.loads(result.read_text());report['releaseUrl']=r['html_url'];report['assets']=[{'name':a['name'],'bytes':a['size'],'url':a['browser_download_url']} for a in r['assets']]
-          Path(os.environ['RUNNER_TEMP'],'publication-status.json').write_text(json.dumps(report,indent=2)+'\n')
-          PY
-          gh auth setup-git --hostname github.com
-          statusRepo="$RUNNER_TEMP/publication-status-repo"
-          git init -b codex/desktop-alpha-publication-status "$statusRepo"
-          cd "$statusRepo"
-          git remote add origin "https://github.com/$GITHUB_REPOSITORY.git"
-          if git ls-remote --exit-code origin refs/heads/codex/desktop-alpha-publication-status >/dev/null 2>&1; then
-            git fetch origin codex/desktop-alpha-publication-status
-            git reset --hard FETCH_HEAD
-          fi
-          cp "$RUNNER_TEMP/publication-status.json" publication-status.json
-          git add publication-status.json
-          git -c user.name=github-actions\[bot\] -c user.email=41898282+github-actions\[bot\]@users.noreply.github.com commit -m "Record desktop alpha publication $GITHUB_RUN_ID"
-          git push origin HEAD:refs/heads/codex/desktop-alpha-publication-status
+    - uses: actions/checkout@v4
+    - uses: actions/download-artifact@v4
+      id: download
+      continue-on-error: true
+      with:
+        name: jaxos-desktop-publication
+        path: publication
+    - name: Publish prerelease and verify uploaded assets
+      id: release
+      if: needs.build.result == 'success' && steps.download.outcome == 'success'
+      env:
+        GH_TOKEN: ${{ github.token }}
+      shell: bash
+      run: "set -euo pipefail\nassets=\"$(find publication -name SHA256SUMS-0.5.1 -printf '%h\\n' -quit)\"\ntest -n \"$assets\"\
+        \ncd \"$assets\"\nsha256sum --check SHA256SUMS-0.5.1\ngh release create \"$ALPHA_TAG\" --repo \"$GITHUB_REPOSITORY\"\
+        \ --target \"$GITHUB_SHA\" --draft --prerelease --latest=false --title 'JaxOS Desktop 0.5.1 \u2014 Windows alpha 1\
+        \ (unsigned)' --notes-file RELEASE-NOTES.md JaxOS-Setup-0.5.1-win-x64.exe JaxOS-Desktop-0.5.1-source.zip SHA256SUMS-0.5.1\
+        \ windows-build-receipt-0.5.1.json package-verification-0.5.1.json LICENSE NOTICE THIRD-PARTY-NOTICES.md\ngh api \"\
+        repos/$GITHUB_REPOSITORY/releases/tags/$ALPHA_TAG\" > \"$GITHUB_WORKSPACE/release-result.json\"\npython3 - <<'PY'\n\
+        import json,os\nfrom pathlib import Path\nr=json.loads(Path(os.environ['GITHUB_WORKSPACE'],'release-result.json').read_text())\n\
+        required={'JaxOS-Setup-0.5.1-win-x64.exe','JaxOS-Desktop-0.5.1-source.zip','SHA256SUMS-0.5.1','windows-build-receipt-0.5.1.json','package-verification-0.5.1.json','LICENSE','NOTICE','THIRD-PARTY-NOTICES.md'}\n\
+        assert r['prerelease'] and r['draft']\nassert required <= {a['name'] for a in r['assets']}\nassert all(a['state']=='uploaded'\
+        \ and a['size']>0 for a in r['assets'] if a['name'] in required)\nprint(r['html_url'])\nPY\ngh release edit \"$ALPHA_TAG\"\
+        \ --repo \"$GITHUB_REPOSITORY\" --draft=false --prerelease --latest=false\ngh api \"repos/$GITHUB_REPOSITORY/releases/tags/$ALPHA_TAG\"\
+        \ > \"$GITHUB_WORKSPACE/release-result.json\"\npython3 -c 'import json,os; from pathlib import Path; r=json.loads(Path(os.environ[\"\
+        GITHUB_WORKSPACE\"],\"release-result.json\").read_text()); assert r[\"prerelease\"] and not r[\"draft\"]'\n"
+    - name: Record publication outcome in repository
+      if: always()
+      env:
+        GH_TOKEN: ${{ github.token }}
+        BUILD_RESULT: ${{ needs.build.result }}
+        RELEASE_RESULT: ${{ steps.release.outcome }}
+      shell: bash
+      run: "set -euo pipefail\npython3 - <<'PY'\nimport json,os\nfrom pathlib import Path\nreport={'tag':os.environ['ALPHA_TAG'],'sourceCommit':os.environ['GITHUB_SHA'],'build':os.environ['BUILD_RESULT'],'publication':os.environ['RELEASE_RESULT'],'runUrl':f\"\
+        https://github.com/{os.environ['GITHUB_REPOSITORY']}/actions/runs/{os.environ['GITHUB_RUN_ID']}\",'nativeWindowsValidated':False}\n\
+        result=Path('release-result.json')\nif result.exists():\n  r=json.loads(result.read_text());report['releaseUrl']=r['html_url'];report['assets']=[{'name':a['name'],'bytes':a['size'],'url':a['browser_download_url']}\
+        \ for a in r['assets']]\nPath(os.environ['RUNNER_TEMP'],'publication-status.json').write_text(json.dumps(report,indent=2)+'\\\
+        n')\nPY\ngh auth setup-git --hostname github.com\nstatusRepo=\"$RUNNER_TEMP/publication-status-repo\"\ngit init -b\
+        \ codex/desktop-alpha-publication-status \"$statusRepo\"\ncd \"$statusRepo\"\ngit remote add origin \"https://github.com/$GITHUB_REPOSITORY.git\"\
+        \nif git ls-remote --exit-code origin refs/heads/codex/desktop-alpha-publication-status >/dev/null 2>&1; then\n  git\
+        \ fetch origin codex/desktop-alpha-publication-status\n  git reset --hard FETCH_HEAD\nfi\ncp \"$RUNNER_TEMP/publication-status.json\"\
+        \ publication-status.json\ngit add publication-status.json\ngit -c user.name=github-actions\\[bot\\] -c user.email=41898282+github-actions\\\
+        [bot\\]@users.noreply.github.com commit -m \"Record desktop alpha publication $GITHUB_RUN_ID\"\ngit push origin HEAD:refs/heads/codex/desktop-alpha-publication-status\n"
