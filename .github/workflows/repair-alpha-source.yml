@@ -1,0 +1,71 @@
+name: Repair and verify desktop alpha source archive
+"on":
+  push:
+    branches: [codex/publish-desktop-alpha]
+    paths: [.github/workflows/repair-alpha-source.yml]
+permissions:
+  contents: write
+jobs:
+  repair:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: desktop-v0.5.1-alpha.1
+          fetch-depth: 0
+      - name: Build and check complete source; preserve verified installer
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir repair
+          git -C "$GITHUB_WORKSPACE" archive --format=zip --prefix=JaxOS-Desktop-0.5.1/ --output="$GITHUB_WORKSPACE/repair/JaxOS-Desktop-0.5.1-source.zip" HEAD:apps/desktop
+          python3 - <<'PY'
+          import json,zipfile
+          from pathlib import Path
+          with zipfile.ZipFile('repair/JaxOS-Desktop-0.5.1-source.zip') as z:
+            required={'JaxOS-Desktop-0.5.1/package.json','JaxOS-Desktop-0.5.1/LICENSE','JaxOS-Desktop-0.5.1/build/evaluate.cmd','JaxOS-Desktop-0.5.1/build/installer.nsi','JaxOS-Desktop-0.5.1/src/App.tsx'}
+            assert required <= set(z.namelist())
+            assert z.testzip() is None
+            assert json.loads(z.read('JaxOS-Desktop-0.5.1/package.json'))['license']=='Apache-2.0'
+            print('Verified source entries:',len(z.namelist()))
+          PY
+          gh release download desktop-v0.5.1-alpha.1 --repo "$GITHUB_REPOSITORY" --pattern JaxOS-Setup-0.5.1-win-x64.exe --pattern windows-build-receipt-0.5.1.json --dir repair
+          cd repair
+          python3 - <<'PY'
+          import json,hashlib
+          from pathlib import Path
+          r=json.loads(Path('windows-build-receipt-0.5.1.json').read_text())
+          def digest(p):
+            with p.open('rb') as f:return hashlib.file_digest(f,'sha256').hexdigest()
+          assert digest(Path(r['artifact']))==r['sha256']
+          files=[Path(r['artifact']),Path('JaxOS-Desktop-0.5.1-source.zip')]
+          Path('SHA256SUMS-0.5.1').write_text(''.join(digest(p)+'  '+p.name+'\n' for p in files))
+          PY
+          gh release upload desktop-v0.5.1-alpha.1 --repo "$GITHUB_REPOSITORY" --clobber JaxOS-Desktop-0.5.1-source.zip SHA256SUMS-0.5.1
+          gh api "repos/$GITHUB_REPOSITORY/releases/tags/desktop-v0.5.1-alpha.1" > "$RUNNER_TEMP/alpha-release.json"
+          python3 - <<'PY'
+          import json,os,hashlib
+          from pathlib import Path
+          r=json.loads(Path(os.environ['RUNNER_TEMP'],'alpha-release.json').read_text())
+          assert r['prerelease'] and not r['draft']
+          for name in ['JaxOS-Desktop-0.5.1-source.zip','SHA256SUMS-0.5.1','JaxOS-Setup-0.5.1-win-x64.exe']:
+            a=next(a for a in r['assets'] if a['name']==name)
+            assert a['size']==Path(name).stat().st_size
+            if a.get('digest'):assert a['digest']=='sha256:'+hashlib.sha256(Path(name).read_bytes()).hexdigest()
+          report={'publication':'success','sourceArchiveVerified':True,'releaseUrl':r['html_url'],'sourceCommit':os.environ['GITHUB_SHA'],'nativeWindowsValidated':False,'assets':[{'name':a['name'],'bytes':a['size'],'url':a['browser_download_url']} for a in r['assets']]}
+          Path(os.environ['RUNNER_TEMP'],'publication-status.json').write_text(json.dumps(report,indent=2)+'\n')
+          PY
+          gh auth setup-git --hostname github.com
+          reportRepo="$RUNNER_TEMP/final-alpha-report"
+          git init -b codex/desktop-alpha-publication-status "$reportRepo"
+          cd "$reportRepo"
+          git remote add origin "https://github.com/$GITHUB_REPOSITORY.git"
+          git fetch origin codex/desktop-alpha-publication-status
+          git reset --hard FETCH_HEAD
+          cp "$RUNNER_TEMP/publication-status.json" publication-status.json
+          git add publication-status.json
+          git -c user.name=github-actions\[bot\] -c user.email=41898282+github-actions\[bot\]@users.noreply.github.com commit -m 'Verify complete alpha source archive and release checksums'
+          git push origin HEAD:refs/heads/codex/desktop-alpha-publication-status
