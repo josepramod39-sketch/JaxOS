@@ -1,0 +1,83 @@
+name: Accept exact public JaxOS installer
+"on":
+  push:
+    branches: [codex/acceptance-2026-11-12]
+    paths:
+      - .github/workflows/accept-public-installer.yml
+      - apps/desktop/scripts/accept-installed-windows.mjs
+permissions:
+  contents: read
+jobs:
+  windows:
+    runs-on: windows-2022
+    timeout-minutes: 15
+    defaults:
+      run:
+        shell: pwsh
+        working-directory: apps/desktop
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: apps/desktop/package-lock.json
+      - run: npm ci
+      - name: Download the exact public installer and receipt
+        run: |
+          New-Item -ItemType Directory -Force native-acceptance | Out-Null
+          $base = 'https://github.com/josepramod39-sketch/JaxOS/releases/download/desktop-v0.5.1-alpha.1'
+          Invoke-WebRequest "$base/JaxOS-Setup-0.5.1-win-x64.exe" -OutFile native-acceptance/JaxOS-Setup-0.5.1-win-x64.exe
+          Invoke-WebRequest "$base/windows-build-receipt-0.5.1.json" -OutFile native-acceptance/windows-build-receipt-0.5.1.json
+      - name: Exercise installation, real GUI, persistence and uninstall/reinstall
+        run: node scripts/accept-installed-windows.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: exact-public-installer-acceptance
+          path: |
+            apps/desktop/native-acceptance/native-acceptance.json
+            apps/desktop/native-acceptance/native-installed-gui.png
+          if-no-files-found: warn
+  record:
+    needs: windows
+    if: always()
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+      actions: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        continue-on-error: true
+        with:
+          name: exact-public-installer-acceptance
+          path: native-report
+      - name: Save native acceptance evidence to the status branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+          WINDOWS_RESULT: ${{ needs.windows.result }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json,os
+          from pathlib import Path
+          p=Path('native-report/native-acceptance.json')
+          r=json.loads(p.read_text()) if p.exists() else {'status':os.environ['WINDOWS_RESULT'],'detail':'Acceptance report unavailable; see workflow log.'}
+          r['runUrl']=f"https://github.com/{os.environ['GITHUB_REPOSITORY']}/actions/runs/{os.environ['GITHUB_RUN_ID']}"
+          Path(os.environ['RUNNER_TEMP'],'native-acceptance.json').write_text(json.dumps(r,indent=2)+'\n')
+          PY
+          gh auth setup-git --hostname github.com
+          dest="$RUNNER_TEMP/acceptance-status"
+          git init -b codex/acceptance-status-2026-11-12 "$dest"
+          cd "$dest"
+          git remote add origin "https://github.com/$GITHUB_REPOSITORY.git"
+          if git ls-remote --exit-code origin refs/heads/codex/acceptance-status-2026-11-12 >/dev/null 2>&1; then
+            git fetch origin codex/acceptance-status-2026-11-12
+            git reset --hard FETCH_HEAD
+          fi
+          cp "$RUNNER_TEMP/native-acceptance.json" native-acceptance.json
+          git add native-acceptance.json
+          git -c user.name=github-actions\[bot\] -c user.email=41898282+github-actions\[bot\]@users.noreply.github.com commit --allow-empty -m "Record exact public installer acceptance $GITHUB_RUN_ID"
+          git push origin HEAD:refs/heads/codex/acceptance-status-2026-11-12
