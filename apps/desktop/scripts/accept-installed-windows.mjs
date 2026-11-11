@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { readFile, writeFile, mkdir } from 'node:fs/promises';
+import { access, readFile, writeFile, mkdir } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import path from 'node:path';
 import { spawn } from 'node:child_process';
@@ -36,7 +36,7 @@ try{
  await check('History survives native application restart',async()=>{const {page,errors}=await launch();const state=await page.evaluate(()=>window.jaxos.getState());assert.ok(state.dailyItems.some(x=>x.id===markerId&&x.text===marker));assert.deepEqual(errors,[]);await close();});
  await check('Installed evaluator works from another directory',async()=>{const p=path.join(installed,'resources','app.asar','dist-electron','eval.cjs');const old=process.env.ELECTRON_RUN_AS_NODE;process.env.ELECTRON_RUN_AS_NODE='1';try{assert.match(await run(executable,[p,'--help']),/Usage: evaluate run/);}finally{if(old===undefined)delete process.env.ELECTRON_RUN_AS_NODE;else process.env.ELECTRON_RUN_AS_NODE=old;}});
  await check('Same-version upgrade preserves saved workspace',async()=>{const before=await hash(db);await run(installer,['/S']);assert.equal(await hash(db),before);const {page}=await launch();assert.ok((await page.evaluate(()=>window.jaxos.getState())).dailyItems.some(x=>x.id===markerId));await close();});
- await check('Uninstall preserves application data',async()=>{const before=await hash(db);await run(path.join(installed,'Uninstall JaxOS.exe'),['/S']);assert.equal(await hash(db),before);let removed=false;try{await readFile(executable);}catch(e){if(e.code==='ENOENT')removed=true;else throw e;}assert.ok(removed,'Installed executable still exists after uninstall.');});
+ await check('Uninstall preserves application data',async()=>{const before=await hash(db);await run(path.join(installed,'Uninstall JaxOS.exe'),['/S']);const started=Date.now();let removed=false;while(Date.now()-started<30000){try{await access(executable);}catch(e){if(e.code==='ENOENT'){removed=true;break;}throw e;}await new Promise(resolve=>setTimeout(resolve,100));}assert.ok(removed,'Installed executable still exists 30 seconds after uninstall launcher exit.');assert.equal(await hash(db),before);return {launcherExitToRemovalMs:Date.now()-started};});
  await check('Reinstall restores the existing workspace',async()=>{await run(installer,['/S']);const {page,errors}=await launch();assert.ok((await page.evaluate(()=>window.jaxos.getState())).dailyItems.some(x=>x.id===markerId));await page.evaluate(id=>window.jaxos.removeDailyItem(id),markerId);assert.deepEqual(errors,[]);await close();});
  report.status='pass';
 }catch(e){report.status='fail';report.error=String(e);console.error(e);process.exitCode=1;}
