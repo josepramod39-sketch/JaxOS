@@ -1,0 +1,23 @@
+
+7-Zip (z) 24.09 (x64) : Copyright (c) 1999-2024 Igor Pavlov : 2024-11-28
+ 64-bit locale=C.UTF-8 Threads:5 OPEN_MAX:16384, ASM
+
+Scanning the drive for archives:
+1 file, 113296488 bytes (109 MiB)
+
+Extracting archive: /workspace/.acceptance/2026-11-12/JaxOS-Setup-0.5.1-win-x64.exe
+--
+Path = /workspace/.acceptance/2026-11-12/JaxOS-Setup-0.5.1-win-x64.exe
+Type = Nsis
+Physical Size = 113296488
+Method = LZMA:25
+Solid = +
+Headers Size = 41146
+Embedded Stub Size = 52224
+SubType = NSIS-3 Unicode BadCmd=13
+
+Everything is Ok
+
+Files: 3
+Size:       280489398
+Compressed: 113296488

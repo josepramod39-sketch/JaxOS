@@ -1,0 +1,11 @@
+{
+  "status": "pass",
+  "payloadFilesMatchedPublishedHashes": 32,
+  "payloadFilesMatchingFreshBuild": 32,
+  "mismatches": [],
+  "wrapperVerified": true,
+  "applicationArchitecture": "win32-x64",
+  "version": "0.5.1",
+  "license": "Apache-2.0",
+  "nativeWindowsExecuted": false
+}

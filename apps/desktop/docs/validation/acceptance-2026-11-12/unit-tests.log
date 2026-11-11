@@ -1,0 +1,64 @@
+
+> jaxos-desktop@0.5.1 test
+> vitest run --reporter=default --reporter=json --outputFile=docs/validation/acceptance-2026-11-12/unit-tests.json
+
+
+ RUN  v5.0.3 /workspace/JaxOS-acceptance/apps/desktop
+
+ ✓ tests/packaged-evaluation.test.ts (2 tests) 6529ms
+   ✓ evaluation CLI shipped inside ASAR (2)
+     ✓ runs its private coordinator and recovery fixtures from an unrelated directory without system Node 1403ms
+     ✓ copies archived KiCad fixtures and executes actual clean, fault, stale and cancellation checks 4937ms
+ ✓ tests/evaluation.test.ts (5 tests) 4390ms
+   ✓ local evaluation comparison (5)
+     ✓ compares matching results and refuses changed environments, missing scores and empty reports 696ms
+     ✓ runs coordinator cancellation and crash recovery with isolated data and leaves absent live inference unscored 1452ms
+     ✓ rejects malformed reports even when both files contain matching invalid data 1425ms
+     ✓ rejects ambiguous CLI options and invalid numeric input before creating reports 635ms
+ ✓ tests/service.test.ts (11 tests) 3865ms
+   ✓ assistant workspace service (11)
+     ✓ invalidates earlier evidence on the next run and catches changes made during the new check 1396ms
+     ✓ persists stale evidence when refresh fails after deleting the project board 1133ms
+     ✓ persists stale evidence when refresh fails after deleting the project directory 987ms
+ ✓ tests/service-process.test.ts (3 tests) 1360ms
+   ✓ actual isolated coordinator process (3)
+     ✓ recovers an interrupted real HTTP stream after a crash without replaying inference 1007ms
+ ✓ tests/kicad.test.ts (17 tests) 17689ms
+   ✓ actual KiCad checks and snapshot evidence (11)
+     ✓ runs clean erc, preserves source bytes, and records exact commands plus hashes 598ms
+     ✓ runs clean drc, preserves source bytes, and records exact commands plus hashes 923ms
+     ✓ reports actual erc faults with exit 5 940ms
+     ✓ reports actual drc faults with exit 5 677ms
+     ✓ exports actual schematic and PCB SVGs from the saved snapshot 1162ms
+     ✓ exports a complete Gerber and drill set only after successful checks 4004ms
+     ✓ includes internal copper layers in manufacturing exports for a four-layer PCB 3621ms
+     ✓ marks results stale when the source changes after the snapshot was captured 691ms
+     ✓ flags DRC parity and blocks fabrication when schematic and board disagree 2289ms
+     ✓ blocks fabrication when the PCB has an actual disconnected net 1281ms
+   ✓ report integrity and filesystem boundaries (6)
+     ✓ cancels an active KiCad process and records the attempted command 499ms
+     ✓ honors cancellation and never reuses a previous run directory 555ms
+ ✓ tests/llama-evaluation.test.ts (2 tests) 1231ms
+   ✓ llama.cpp evaluation provider (2)
+     ✓ uses the owned supervisor for metadata, cancellation, recovery and cleanup with a controlled executable 1225ms
+ ✓ tests/admission.test.ts (2 tests) 785ms
+   ✓ durable task admission (2)
+     ✓ runs a real KiCad check once for duplicate admissions and retains its evidence/status 675ms
+ ✓ tests/model-controls.test.ts (8 tests) 296ms
+ ✓ tests/llama.test.ts (9 tests) 159ms
+ ✓ tests/sqlite-store.test.ts (7 tests) 139ms
+ ✓ tests/ollama.test.ts (6 tests) 110ms
+ ✓ tests/harness.test.ts (9 tests) 37ms
+ ✓ tests/store.test.ts (5 tests) 31ms
+
+ Test Files  13 passed (13)
+      Tests  86 passed (86)
+   Start at  18:38:36
+   Duration  19.82s (tests 97%, import 2%, transform 1%)
+
+JSON report written to /workspace/JaxOS-acceptance/apps/desktop/docs/validation/acceptance-2026-11-12/unit-tests.json
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

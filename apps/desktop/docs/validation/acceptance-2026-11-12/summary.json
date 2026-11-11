@@ -1,0 +1,66 @@
+{
+  "acceptanceDate": "2026-11-12",
+  "release": "desktop-v0.5.1-alpha.1",
+  "releaseCommit": "8d44727d2342f97dd1ab3a79df59c5bdeef0d20f",
+  "installerSha256": "8529cf081e964c714e3a2fbcddee4f178c8c7f79e56942fff886d9961dd4a114",
+  "integrity": {
+    "sourceFilesMatched": 470,
+    "payloadFilesMatched": 32
+  },
+  "typecheck": "pass",
+  "build": "pass",
+  "automatedTests": {
+    "passed": 86,
+    "failed": 0
+  },
+  "linuxElectron": {
+    "passed": 13,
+    "failed": 0,
+    "skipped": 0
+  },
+  "exactPublicInstallerNativeWindows": {
+    "status": "pass",
+    "passed": 8,
+    "failed": 0,
+    "runUrl": "https://github.com/josepramod39-sketch/JaxOS/actions/runs/43080574831"
+  },
+  "modelEvaluations": {
+    "llama-development": {
+      "exitCode": 1,
+      "pass": 12,
+      "fail": 2,
+      "unscored": 0,
+      "failedCaseIds": [
+        "model-arithmetic",
+        "coordinator-model-arithmetic"
+      ]
+    },
+    "llama-heldout": {
+      "exitCode": 1,
+      "pass": 4,
+      "fail": 1,
+      "unscored": 0,
+      "failedCaseIds": [
+        "heldout-coordinator-model"
+      ]
+    },
+    "ollama-development": {
+      "exitCode": 1,
+      "pass": 11,
+      "fail": 2,
+      "unscored": 0,
+      "failedCaseIds": [
+        "model-arithmetic",
+        "coordinator-model-arithmetic"
+      ]
+    }
+  },
+  "haasFeatureAcceptance": "not-met: proposed experiment-management features are not implemented",
+  "limitations": [
+    "No native Windows live-model or KiCad execution in this run",
+    "No GPU acceptance",
+    "Same-version upgrade only; not a cross-version migration test",
+    "Dedicated CI account; ordinary non-admin account/UAC flow not independently certified"
+  ],
+  "overall": "Application baseline checks passed; model-quality criteria failed; full HaaS acceptance not met"
+}

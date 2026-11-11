@@ -1,0 +1,11 @@
+{
+  "releaseTag": "desktop-v0.5.1-alpha.1",
+  "releaseCommit": "8d44727d2342f97dd1ab3a79df59c5bdeef0d20f",
+  "installerSha256": "8529cf081e964c714e3a2fbcddee4f178c8c7f79e56942fff886d9961dd4a114",
+  "installerBytes": 113296488,
+  "archiveSha256": "7f17e1d9a235ab58a64cf10fb6ece1ae55bfeb39c8107f12c7efc930c52311f7",
+  "downloadedAssetsMatchPublishedChecksums": true,
+  "sourceArchiveCrcValid": true,
+  "sourceFilesMatchReleaseCheckout": 470,
+  "nativeWindowsExecuted": false
+}

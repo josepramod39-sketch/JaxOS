@@ -1,0 +1,6 @@
+PASS heldout-analysis-denies-preview: Tool request rejected as expected.
+PASS heldout-design-allows-preview: Tool request accepted as expected.
+PASS heldout-unknown-tool: Tool request rejected as expected.
+PASS heldout-fault-erc: KiCad reported failed with 2 findings; source unchanged.
+FAIL heldout-coordinator-model: Coordinator response did not meet the fixture criterion.
+Results written to /workspace/JaxOS-acceptance/apps/desktop/docs/validation/acceptance-2026-11-12/llama-heldout.json

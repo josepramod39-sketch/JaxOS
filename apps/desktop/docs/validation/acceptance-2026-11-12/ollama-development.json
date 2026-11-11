@@ -1,0 +1,218 @@
+{
+  "schemaVersion": 1,
+  "runId": "7b28572d-b654-4206-8e52-c239feee451f",
+  "createdAt": "2026-11-11T18:44:47.471Z",
+  "suite": "jaxos-local-development-v2",
+  "fixtureSha256": "46413a650a5d5ecb0f99385cf38ad8b7aab4e835da78fd6999b5be76866b543c",
+  "sourceSha256": "594641bf237c304c751bb6be9ce0243b1178ef9dc98ef02d9daaff36b6a01732",
+  "environment": {
+    "identityKind": "packaged-bundles-v1",
+    "node": "v24.21.0",
+    "platform": "linux",
+    "arch": "x64",
+    "kicad": {
+      "version": "9.0.2",
+      "path": "/usr/bin/kicad-cli"
+    },
+    "kicadFixturesSha256": "bb5a45a75b453ad71486a44147a12e44a5c6a7846b38691f0f938265a9998981",
+    "model": {
+      "provider": "ollama",
+      "model": "qwen3:0.6b",
+      "profile": {
+        "contextTokens": 4096,
+        "outputTokens": 256,
+        "keepAliveSeconds": 300,
+        "thinking": "off",
+        "gpu": "auto",
+        "temperature": 0
+      },
+      "connection": {
+        "url": "http://127.0.0.1:11434"
+      },
+      "metadata": {
+        "details": {
+          "name": "qwen3:0.6b",
+          "local": true,
+          "thinking": true,
+          "tools": true,
+          "maxContext": 40960,
+          "parameterSize": "751.63M",
+          "quantization": "Q4_K_M"
+        }
+      }
+    }
+  },
+  "results": [
+    {
+      "id": "policy-plan-denies-drc",
+      "status": "pass",
+      "detail": "Tool request rejected as expected.",
+      "durationMs": 0,
+      "observed": {
+        "allowed": false
+      }
+    },
+    {
+      "id": "policy-test-allows-drc",
+      "status": "pass",
+      "detail": "Tool request accepted as expected.",
+      "durationMs": 0,
+      "observed": {
+        "allowed": true
+      }
+    },
+    {
+      "id": "policy-test-denies-path",
+      "status": "pass",
+      "detail": "Tool request rejected as expected.",
+      "durationMs": 0,
+      "observed": {
+        "allowed": false
+      }
+    },
+    {
+      "id": "context-latest-complete",
+      "status": "pass",
+      "detail": "Retained the latest complete input and excluded unfinished/older messages.",
+      "durationMs": 0,
+      "observed": {
+        "messages": [
+          {
+            "role": "system",
+            "content": "Be accurate."
+          },
+          {
+            "role": "user",
+            "content": "Latest requirement: 17"
+          }
+        ],
+        "omitted": 2
+      }
+    },
+    {
+      "id": "cancel-before-execution",
+      "status": "pass",
+      "detail": "Pre-cancelled request did not execute a tool.",
+      "durationMs": 1,
+      "observed": {
+        "executions": 0
+      }
+    },
+    {
+      "id": "kicad-clean-drc",
+      "status": "pass",
+      "detail": "KiCad reported passed with 0 findings; source unchanged.",
+      "durationMs": 1328,
+      "observed": {
+        "status": "passed",
+        "exitCode": 0,
+        "findings": 0,
+        "toolVersion": "9.0.2",
+        "inputFingerprint": "3affb3da7bee8af7fb4d5780bc64ee53289ab323be1e1613b97e6f296f2af434",
+        "stale": false,
+        "sourceUnchanged": true
+      }
+    },
+    {
+      "id": "kicad-fault-drc",
+      "status": "pass",
+      "detail": "KiCad reported failed with 3 findings; source unchanged.",
+      "durationMs": 1191,
+      "observed": {
+        "status": "failed",
+        "exitCode": 5,
+        "findings": 3,
+        "toolVersion": "9.0.2",
+        "inputFingerprint": "9bc2e024164aff4651982ac3d3262ae92225370469f7f7837097ac01b8e4eb5c",
+        "stale": false,
+        "sourceUnchanged": true
+      }
+    },
+    {
+      "id": "kicad-stale-snapshot",
+      "status": "pass",
+      "detail": "A changed source invalidated the successful snapshot result.",
+      "durationMs": 429,
+      "observed": {
+        "status": "passed",
+        "stale": true,
+        "sourceChanged": true,
+        "cancelled": false,
+        "toolVersion": "9.0.2"
+      }
+    },
+    {
+      "id": "kicad-active-cancel",
+      "status": "pass",
+      "detail": "Active KiCad job terminated with cancelled status.",
+      "durationMs": 413,
+      "observed": {
+        "status": "cancelled",
+        "stale": false,
+        "sourceChanged": false,
+        "cancelled": true,
+        "toolVersion": "9.0.2"
+      }
+    },
+    {
+      "id": "model-arithmetic",
+      "status": "fail",
+      "detail": "Response did not match the fixture answer.",
+      "durationMs": 4311,
+      "observed": {
+        "text": "2",
+        "reasoning": "",
+        "usage": {
+          "inputTokens": 32,
+          "outputTokens": 2,
+          "loadMs": 4139.950924,
+          "generationMs": 20.113
+        },
+        "finishReason": "stop"
+      }
+    },
+    {
+      "id": "coordinator-active-cancel",
+      "status": "pass",
+      "detail": "Coordinator state and request count satisfied the fixture.",
+      "durationMs": 403,
+      "observed": {
+        "status": "cancelled",
+        "requests": 1,
+        "persisted": true
+      }
+    },
+    {
+      "id": "coordinator-crash-recovery",
+      "status": "pass",
+      "detail": "Coordinator state and request count satisfied the fixture.",
+      "durationMs": 992,
+      "observed": {
+        "status": "error",
+        "finishReason": "interrupted",
+        "requests": 1,
+        "interruptedTask": true,
+        "partialPreserved": true
+      }
+    },
+    {
+      "id": "coordinator-model-arithmetic",
+      "status": "fail",
+      "detail": "Coordinator response did not meet the fixture criterion.",
+      "durationMs": 2155,
+      "observed": {
+        "status": "complete",
+        "text": "1. **Problem**: What is 2 + 2?  \n2. **Constraints**: The user is asking a simple arithmetic question.  \n3. **Unknowns**: No unknowns in this case.  \n\n**Answer**: 4",
+        "usage": {
+          "inputTokens": 144,
+          "outputTokens": 49,
+          "loadMs": 3.074659,
+          "generationMs": 1401.723
+        },
+        "finishReason": "stop",
+        "model": "qwen3:0.6b",
+        "provider": "ollama"
+      }
+    }
+  ]
+}

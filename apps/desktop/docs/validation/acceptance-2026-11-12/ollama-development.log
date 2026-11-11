@@ -1,0 +1,14 @@
+PASS policy-plan-denies-drc: Tool request rejected as expected.
+PASS policy-test-allows-drc: Tool request accepted as expected.
+PASS policy-test-denies-path: Tool request rejected as expected.
+PASS context-latest-complete: Retained the latest complete input and excluded unfinished/older messages.
+PASS cancel-before-execution: Pre-cancelled request did not execute a tool.
+PASS kicad-clean-drc: KiCad reported passed with 0 findings; source unchanged.
+PASS kicad-fault-drc: KiCad reported failed with 3 findings; source unchanged.
+PASS kicad-stale-snapshot: A changed source invalidated the successful snapshot result.
+PASS kicad-active-cancel: Active KiCad job terminated with cancelled status.
+FAIL model-arithmetic: Response did not match the fixture answer.
+PASS coordinator-active-cancel: Coordinator state and request count satisfied the fixture.
+PASS coordinator-crash-recovery: Coordinator state and request count satisfied the fixture.
+FAIL coordinator-model-arithmetic: Coordinator response did not meet the fixture criterion.
+Results written to /workspace/JaxOS-acceptance/apps/desktop/docs/validation/acceptance-2026-11-12/ollama-development.json

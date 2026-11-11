@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "version": "0.5.1",
+  "platform": "win32",
+  "arch": "x64",
+  "scope": "Exact public installer; disposable Windows account; no live model, KiCad or GPU acceptance",
+  "checks": [
+    {
+      "name": "Published installer checksum",
+      "status": "pass",
+      "durationMs": 129,
+      "details": {
+        "sha256": "8529cf081e964c714e3a2fbcddee4f178c8c7f79e56942fff886d9961dd4a114"
+      }
+    },
+    {
+      "name": "Fresh non-elevated installer invocation",
+      "status": "pass",
+      "durationMs": 16118
+    },
+    {
+      "name": "Packaged GUI and real coordinator bridge",
+      "status": "pass",
+      "durationMs": 1650
+    },
+    {
+      "name": "History survives native application restart",
+      "status": "pass",
+      "durationMs": 563
+    },
+    {
+      "name": "Installed evaluator works from another directory",
+      "status": "pass",
+      "durationMs": 77
+    },
+    {
+      "name": "Same-version upgrade preserves saved workspace",
+      "status": "pass",
+      "durationMs": 16055
+    },
+    {
+      "name": "Uninstall preserves application data",
+      "status": "fail",
+      "error": "AssertionError [ERR_ASSERTION]: Installed executable still exists after uninstall.",
+      "durationMs": 188
+    }
+  ],
+  "limitations": [
+    "No live model on Windows",
+    "No KiCad on Windows",
+    "No GPU verification",
+    "HaaS experiment features not implemented"
+  ],
+  "status": "fail",
+  "error": "AssertionError [ERR_ASSERTION]: Installed executable still exists after uninstall.",
+  "runUrl": "https://github.com/josepramod39-sketch/JaxOS/actions/runs/43080140433"
+}

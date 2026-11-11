@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "version": "0.5.1",
+  "platform": "win32",
+  "arch": "x64",
+  "scope": "Exact public installer; disposable Windows account; no live model, KiCad or GPU acceptance",
+  "checks": [
+    {
+      "name": "Published installer checksum",
+      "status": "pass",
+      "durationMs": 97,
+      "details": {
+        "sha256": "8529cf081e964c714e3a2fbcddee4f178c8c7f79e56942fff886d9961dd4a114"
+      }
+    },
+    {
+      "name": "Fresh non-elevated installer invocation",
+      "status": "pass",
+      "durationMs": 10614
+    },
+    {
+      "name": "Packaged GUI and real coordinator bridge",
+      "status": "pass",
+      "durationMs": 1503
+    },
+    {
+      "name": "History survives native application restart",
+      "status": "pass",
+      "durationMs": 445
+    },
+    {
+      "name": "Installed evaluator works from another directory",
+      "status": "pass",
+      "durationMs": 61
+    },
+    {
+      "name": "Same-version upgrade preserves saved workspace",
+      "status": "pass",
+      "durationMs": 10862
+    },
+    {
+      "name": "Uninstall preserves application data",
+      "status": "pass",
+      "durationMs": 165,
+      "details": {
+        "launcherExitToRemovalMs": 110
+      }
+    },
+    {
+      "name": "Reinstall restores the existing workspace",
+      "status": "pass",
+      "durationMs": 10654
+    }
+  ],
+  "limitations": [
+    "No live model on Windows",
+    "No KiCad on Windows",
+    "No GPU verification",
+    "HaaS experiment features not implemented"
+  ],
+  "status": "pass",
+  "runUrl": "https://github.com/josepramod39-sketch/JaxOS/actions/runs/43080574831"
+}
